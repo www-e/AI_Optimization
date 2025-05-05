@@ -1,90 +1,175 @@
 <div class="algorithm-container ga-container">
-    <div class="grid grid-2">
-        <!-- Parameters Section -->
-        <div class="card ga-border">
-            <div class="card-header">
-                <h3><i class="fas fa-sliders-h"></i> GA Parameters</h3>
+    <!-- Parameters Section at the top -->
+    <div class="card ga-border">
+        <div class="card-header">
+            <h3><i class="fas fa-sliders-h"></i> GA Parameters</h3>
+        </div>
+        <div class="card-body">
+            <form id="ga-form">
+                <div class="grid grid-3">
+                    <!-- Column 1 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="ga-genotype">Genotype Representation</label>
+                            <select id="ga-genotype" class="form-control">
+                                <option value="binary">Binary</option>
+                                <option value="real_value">Real Value</option>
+                                <option value="integer">Integer</option>
+                            </select>
+                            <small>Type of gene representation</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ga-population-size">Population Size</label>
+                            <input type="number" id="ga-population-size" class="form-control" value="50" min="10" max="200">
+                            <small>Number of individuals in the population (10-200)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ga-generations">Generations</label>
+                            <input type="number" id="ga-generations" class="form-control" value="100" min="10" max="500">
+                            <small>Number of generations to evolve (10-500)</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 2 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="ga-selection-method">Selection Method</label>
+                            <select id="ga-selection-method" class="form-control">
+                                <option value="tournament">Tournament</option>
+                                <option value="roulette">Roulette Wheel</option>
+                                <option value="rank">Rank Selection</option>
+                            </select>
+                            <small>Method for selecting parents</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ga-crossover-method">Crossover Method</label>
+                            <select id="ga-crossover-method" class="form-control">
+                                <option value="single_point">Single Point</option>
+                                <option value="uniform">Uniform</option>
+                                <option value="multi_point">Multi Point</option>
+                            </select>
+                            <small>Method for combining parent genes</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ga-mutation-type">Mutation Type</label>
+                            <select id="ga-mutation-type" class="form-control">
+                                <option value="bit_flip">Bit Flip</option>
+                                <option value="swap">Swap</option>
+                                <option value="scramble">Scramble</option>
+                                <option value="inversion">Inversion</option>
+                            </select>
+                            <small>Type of mutation operation</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 3 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="ga-mutation-rate">Mutation Rate</label>
+                            <input type="range" id="ga-mutation-rate" class="form-control" value="0.1" min="0.01" max="0.5" step="0.01">
+                            <div class="range-value">0.1</div>
+                            <small>Probability of mutation (0.01-0.5)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ga-elitism">Elitism</label>
+                            <input type="number" id="ga-elitism" class="form-control" value="2" min="0" max="10">
+                            <small>Number of best individuals to keep (0-10)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ga-fitness-function">Fitness Function</label>
+                            <select id="ga-fitness-function" class="form-control">
+                                <option value="accuracy">Classification Accuracy</option>
+                                <option value="f1_score">F1 Score</option>
+                                <option value="precision">Precision</option>
+                                <option value="recall">Recall</option>
+                            </select>
+                            <small>Metric to optimize</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" id="ga-run-btn" class="btn btn-primary btn-block mt-3">
+                    <i class="fas fa-play"></i> Run Genetic Algorithm
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Results Section in the middle -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-line"></i> Results</h3>
+        </div>
+        <div class="card-body">
+            <div class="grid grid-4">
+                <div class="result-card">
+                    <div class="result-label">Final Accuracy</div>
+                    <div id="ga-accuracy" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Execution Time</div>
+                    <div id="ga-time" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Best Fitness</div>
+                    <div id="ga-fitness" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Error Rate</div>
+                    <div id="ga-error" class="result-value">-</div>
+                </div>
             </div>
-            <div class="card-body">
-                <form id="ga-form">
-                    <div class="form-group">
-                        <label for="ga-population-size">Population Size</label>
-                        <input type="number" id="ga-population-size" class="form-control" value="50" min="10" max="200">
-                        <small>Number of individuals in the population (10-200)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="ga-generations">Generations</label>
-                        <input type="number" id="ga-generations" class="form-control" value="100" min="10" max="500">
-                        <small>Number of generations to evolve (10-500)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="ga-mutation-rate">Mutation Rate</label>
-                        <input type="range" id="ga-mutation-rate" class="form-control" value="0.1" min="0.01" max="0.5" step="0.01">
-                        <div class="range-value">0.1</div>
-                        <small>Probability of mutation (0.01-0.5)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="ga-selection-method">Selection Method</label>
-                        <select id="ga-selection-method" class="form-control">
-                            <option value="tournament">Tournament</option>
-                            <option value="roulette">Roulette Wheel</option>
-                        </select>
-                        <small>Method for selecting parents</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="ga-crossover-method">Crossover Method</label>
-                        <select id="ga-crossover-method" class="form-control">
-                            <option value="single_point">Single Point</option>
-                            <option value="uniform">Uniform</option>
-                        </select>
-                        <small>Method for combining parent genes</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="ga-elitism">Elitism</label>
-                        <input type="number" id="ga-elitism" class="form-control" value="2" min="0" max="10">
-                        <small>Number of best individuals to keep (0-10)</small>
-                    </div>
-                    
-                    <button type="button" id="ga-run-btn" class="btn btn-primary btn-block">
-                        <i class="fas fa-play"></i> Run Genetic Algorithm
-                    </button>
-                </form>
+            
+            <div class="chart-container" id="ga-chart-container">
+                <!-- Chart.js will render here -->
             </div>
         </div>
-        
-        <!-- Results Section -->
-        <div class="card">
-            <div class="card-header">
-                <h3><i class="fas fa-chart-line"></i> Results</h3>
+    </div>
+    
+    <!-- Iteration Data Table at the bottom -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-table"></i> Iteration Data</h3>
+        </div>
+        <div class="card-body">
+            <!-- Population Summary -->
+            <div class="population-summary mb-4">
+                <h4>Population Summary</h4>
+                <div class="grid grid-3">
+                    <div class="summary-card">
+                        <div class="summary-label">Initial Population Size</div>
+                        <div id="ga-initial-population" class="summary-value">-</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Convergence Generation</div>
+                        <div id="ga-convergence-gen" class="summary-value">-</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Fitness Evaluations</div>
+                        <div id="ga-fitness-evals" class="summary-value">-</div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="grid grid-2">
-                    <div class="result-card">
-                        <div class="result-label">Final Accuracy</div>
-                        <div id="ga-accuracy" class="result-value">-</div>
-                    </div>
-                    
-                    <div class="result-card">
-                        <div class="result-label">Execution Time</div>
-                        <div id="ga-time" class="result-value">-</div>
-                    </div>
-                </div>
-                
-                <div class="chart-container" id="ga-chart-container">
-                    <!-- Chart.js will render here -->
-                </div>
-                
-                <!-- Iteration Data Table -->
-                <div class="table-container mt-4">
-                    <h4>Iteration Data</h4>
-                    <div id="ga-iterations-table">
-                        <!-- Iteration table will be rendered here -->
-                    </div>
+            
+            <!-- Detailed Iteration Table -->
+            <div id="ga-iterations-table">
+                <!-- Iteration table will be rendered here -->
+            </div>
+            
+            <!-- Best Individual Details -->
+            <div class="best-individual mt-4">
+                <h4>Best Individual</h4>
+                <div class="code-block">
+                    <pre id="ga-best-individual">No data available</pre>
                 </div>
             </div>
         </div>

@@ -1,0 +1,258 @@
+/* Visualization Styles */
+
+/* Grid Layouts */
+.grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Canvas Container */
+.canvas-container {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--bg-light, #f8f9fa);
+}
+
+.canvas-caption {
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid #ddd;
+}
+
+/* Code Block */
+.code-block {
+    background-color: var(--bg-light, #f8f9fa);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.code-block pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+/* Summary Cards */
+.summary-card {
+    background-color: var(--bg-light, #f8f9fa);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.summary-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.summary-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Matrix Table */
+.matrix-table, .probability-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.matrix-table th, .probability-table th {
+    background-color: var(--aco-color-light, #f0f0f0);
+    padding: 0.5rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: var(--text-color, #333);
+}
+
+.matrix-table td, .probability-table td {
+    padding: 0.5rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.no-pheromone, .no-probability {
+    background-color: #f0f0f0;
+}
+
+/* Matrix Legend */
+.matrix-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.color-box {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid #ddd;
+}
+
+.low-pheromone {
+    background-color: rgba(var(--aco-color-rgb, 76, 175, 80), 0.1);
+}
+
+.high-pheromone {
+    background-color: rgba(var(--aco-color-rgb, 76, 175, 80), 1);
+}
+
+/* Formula Container */
+.formula-container {
+    background-color: var(--bg-light, #f8f9fa);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+.formula-container p {
+    margin-bottom: 0.5rem;
+}
+
+.formula-container ul {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+/* Tab Navigation */
+.nav-tabs {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.nav-item {
+    margin-bottom: -1px;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.nav-link:hover {
+    border-color: #e9ecef #e9ecef #ddd;
+    color: #0056b3;
+}
+
+.nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ddd #ddd #fff;
+}
+
+.tab-content > .tab-pane {
+    display: none;
+}
+
+.tab-content > .active {
+    display: block;
+}
+
+/* Iteration Table Styles */
+.iteration-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.iteration-table th {
+    background-color: var(--bg-light, #f8f9fa);
+    color: var(--text-color, #333);
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.iteration-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.iteration-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.iteration-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* GA specific styles */
+.ga-container .iteration-table th {
+    background-color: var(--ga-color-light, rgba(255, 152, 0, 0.1));
+    border-color: var(--ga-color-light, rgba(255, 152, 0, 0.3));
+}
+
+/* ACO specific styles */
+.aco-container .iteration-table th {
+    background-color: var(--aco-color-light, rgba(76, 175, 80, 0.1));
+    border-color: var(--aco-color-light, rgba(76, 175, 80, 0.3));
+}
+
+/* PSO specific styles */
+.pso-container .iteration-table th {
+    background-color: var(--pso-color-light, rgba(33, 150, 243, 0.1));
+    border-color: var(--pso-color-light, rgba(33, 150, 243, 0.3));
+}
+
+/* Tabu specific styles */
+.tabu-container .iteration-table th {
+    background-color: var(--tabu-color-light, rgba(156, 39, 176, 0.1));
+    border-color: var(--tabu-color-light, rgba(156, 39, 176, 0.3));
+}
+
+/* Change indicators */
+.positive-change {
+    color: var(--success-color, #28a745);
+}
+
+.negative-change {
+    color: var(--danger-color, #dc3545);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}

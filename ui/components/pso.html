@@ -1,89 +1,204 @@
 <div class="algorithm-container pso-container">
-    <div class="grid grid-2">
-        <!-- Parameters Section -->
-        <div class="card pso-border">
-            <div class="card-header">
-                <h3><i class="fas fa-sliders-h"></i> PSO Parameters</h3>
+    <!-- Parameters Section at the top -->
+    <div class="card pso-border">
+        <div class="card-header">
+            <h3><i class="fas fa-sliders-h"></i> PSO Parameters</h3>
+        </div>
+        <div class="card-body">
+            <form id="pso-form">
+                <div class="grid grid-3">
+                    <!-- Column 1 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="pso-swarm-size">Swarm Size</label>
+                            <input type="number" id="pso-swarm-size" class="form-control" value="30" min="10" max="100">
+                            <small>Number of particles in the swarm (10-100)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pso-iterations">Iterations</label>
+                            <input type="number" id="pso-iterations" class="form-control" value="100" min="10" max="500">
+                            <small>Number of iterations to run (10-500)</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 2 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="pso-inertia">Inertia Weight</label>
+                            <input type="range" id="pso-inertia" class="form-control" value="0.7" min="0.1" max="1.0" step="0.05">
+                            <div class="range-value">0.7</div>
+                            <small>Controls the influence of previous velocity (0.1-1.0)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pso-cognitive">Cognitive Coefficient</label>
+                            <input type="range" id="pso-cognitive" class="form-control" value="1.5" min="0.5" max="2.5" step="0.1">
+                            <div class="range-value">1.5</div>
+                            <small>Controls attraction to particle's best position (0.5-2.5)</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 3 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="pso-social">Social Coefficient</label>
+                            <input type="range" id="pso-social" class="form-control" value="1.5" min="0.5" max="2.5" step="0.1">
+                            <div class="range-value">1.5</div>
+                            <small>Controls attraction to swarm's best position (0.5-2.5)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pso-topology">Swarm Topology</label>
+                            <select id="pso-topology" class="form-control">
+                                <option value="global">Global Best</option>
+                                <option value="ring">Ring</option>
+                                <option value="vonneumann">Von Neumann</option>
+                            </select>
+                            <small>Neighborhood structure for information sharing</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" id="pso-run-btn" class="btn btn-primary btn-block mt-3">
+                    <i class="fas fa-play"></i> Run Particle Swarm Optimization
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Results Section in the middle -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-line"></i> Results</h3>
+        </div>
+        <div class="card-body">
+            <div class="grid grid-4">
+                <div class="result-card">
+                    <div class="result-label">Final Accuracy</div>
+                    <div id="pso-accuracy" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Execution Time</div>
+                    <div id="pso-time" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Global Best Fitness</div>
+                    <div id="pso-global-best" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Convergence Speed</div>
+                    <div id="pso-convergence-speed" class="result-value">-</div>
+                </div>
             </div>
-            <div class="card-body">
-                <form id="pso-form">
-                    <div class="form-group">
-                        <label for="pso-swarm-size">Swarm Size</label>
-                        <input type="number" id="pso-swarm-size" class="form-control" value="30" min="10" max="100">
-                        <small>Number of particles in the swarm (10-100)</small>
+            
+            <div class="chart-container" id="pso-chart-container">
+                <!-- Chart.js will render here -->
+            </div>
+            
+            <!-- Particle Visualization -->
+            <div class="particle-visualization mt-4">
+                <h4>Particle Movement Visualization</h4>
+                <div class="grid grid-2">
+                    <div class="canvas-container">
+                        <canvas id="pso-particle-canvas" width="400" height="300"></canvas>
+                        <div class="canvas-caption">Particle Positions in Search Space</div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="pso-iterations">Iterations</label>
-                        <input type="number" id="pso-iterations" class="form-control" value="100" min="10" max="500">
-                        <small>Number of iterations to run (10-500)</small>
+                    <div class="velocity-details">
+                        <h5>Velocity and Position Details</h5>
+                        <div id="pso-velocity-details" class="code-block">
+                            <pre>No particle data available yet</pre>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="pso-inertia">Inertia Weight</label>
-                        <input type="range" id="pso-inertia" class="form-control" value="0.7" min="0.1" max="1.0" step="0.05">
-                        <div class="range-value">0.7</div>
-                        <small>Controls the influence of previous velocity (0.1-1.0)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="pso-cognitive">Cognitive Coefficient</label>
-                        <input type="range" id="pso-cognitive" class="form-control" value="1.5" min="0.5" max="2.5" step="0.1">
-                        <div class="range-value">1.5</div>
-                        <small>Controls attraction to particle's best position (0.5-2.5)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="pso-social">Social Coefficient</label>
-                        <input type="range" id="pso-social" class="form-control" value="1.5" min="0.5" max="2.5" step="0.1">
-                        <div class="range-value">1.5</div>
-                        <small>Controls attraction to swarm's best position (0.5-2.5)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="pso-topology">Swarm Topology</label>
-                        <select id="pso-topology" class="form-control">
-                            <option value="global">Global Best</option>
-                            <option value="ring">Ring</option>
-                            <option value="vonneumann">Von Neumann</option>
-                        </select>
-                        <small>Neighborhood structure for information sharing</small>
-                    </div>
-                    
-                    <button type="button" id="pso-run-btn" class="btn btn-primary btn-block">
-                        <i class="fas fa-play"></i> Run Particle Swarm Optimization
-                    </button>
-                </form>
+                </div>
             </div>
         </div>
-        
-        <!-- Results Section -->
-        <div class="card">
-            <div class="card-header">
-                <h3><i class="fas fa-chart-line"></i> Results</h3>
+    </div>
+    
+    <!-- Iteration Data Table at the bottom -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-table"></i> Iteration Data</h3>
+        </div>
+        <div class="card-body">
+            <!-- Swarm Summary -->
+            <div class="swarm-summary mb-4">
+                <h4>Swarm Summary</h4>
+                <div class="grid grid-3">
+                    <div class="summary-card">
+                        <div class="summary-label">Total Particles</div>
+                        <div id="pso-total-particles" class="summary-value">-</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Convergence Iteration</div>
+                        <div id="pso-convergence-iter" class="summary-value">-</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Position Updates</div>
+                        <div id="pso-position-updates" class="summary-value">-</div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="grid grid-2">
-                    <div class="result-card">
-                        <div class="result-label">Final Accuracy</div>
-                        <div id="pso-accuracy" class="result-value">-</div>
+            
+            <!-- Tabs for different data views -->
+            <div class="pso-data-tabs">
+                <ul class="nav nav-tabs" id="pso-data-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="iterations-tab" data-toggle="tab" href="#pso-iterations-content">Iterations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="particles-tab" data-toggle="tab" href="#particles-content">Particle Positions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="velocity-tab" data-toggle="tab" href="#velocity-content">Velocity Analysis</a>
+                    </li>
+                </ul>
+                
+                <div class="tab-content mt-3">
+                    <!-- Iterations Tab -->
+                    <div class="tab-pane fade show active" id="pso-iterations-content">
+                        <div id="pso-iterations-table">
+                            <!-- Iteration table will be rendered here -->
+                        </div>
                     </div>
                     
-                    <div class="result-card">
-                        <div class="result-label">Execution Time</div>
-                        <div id="pso-time" class="result-value">-</div>
+                    <!-- Particles Tab -->
+                    <div class="tab-pane fade" id="particles-content">
+                        <div class="particles-visualization">
+                            <h5>Particle Positions</h5>
+                            <div id="pso-particles-table" class="table-container">
+                                <!-- Particles table will be rendered here -->
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="chart-container" id="pso-chart-container">
-                    <!-- Chart.js will render here -->
-                </div>
-                
-                <!-- Iteration Data Table -->
-                <div class="table-container mt-4">
-                    <h4>Iteration Data</h4>
-                    <div id="pso-iterations-table">
-                        <!-- Iteration table will be rendered here -->
+                    
+                    <!-- Velocity Analysis Tab -->
+                    <div class="tab-pane fade" id="velocity-content">
+                        <div class="velocity-analysis">
+                            <h5>Velocity Analysis</h5>
+                            <div id="pso-velocity-chart" class="chart-container">
+                                <!-- Velocity chart will be rendered here -->
+                            </div>
+                            <div class="velocity-formula mt-3">
+                                <h6>Velocity Update Formula:</h6>
+                                <div class="formula-container">
+                                    <p>v<sub>i</sub>(t+1) = w × v<sub>i</sub>(t) + c<sub>1</sub>r<sub>1</sub>[p<sub>i</sub> - x<sub>i</sub>(t)] + c<sub>2</sub>r<sub>2</sub>[g - x<sub>i</sub>(t)]</p>
+                                    <p>Where:</p>
+                                    <ul>
+                                        <li>v<sub>i</sub>(t) = Velocity of particle i at time t</li>
+                                        <li>x<sub>i</sub>(t) = Position of particle i at time t</li>
+                                        <li>p<sub>i</sub> = Personal best position of particle i</li>
+                                        <li>g = Global best position</li>
+                                        <li>w = Inertia weight</li>
+                                        <li>c<sub>1</sub>, c<sub>2</sub> = Cognitive and social coefficients</li>
+                                        <li>r<sub>1</sub>, r<sub>2</sub> = Random numbers between 0 and 1</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

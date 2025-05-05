@@ -1,5 +1,4 @@
-// Genetic Algorithm page functionality
-import { showLoading, hideLoading, displayErrorMessage, updateAlgorithmResults, fetchResults, runOptimization, createSimpleChart, createIterationTable } from '../utils.js';
+import { showLoading, hideLoading, displayErrorMessage, updateAlgorithmResults, fetchResults, runOptimization, createSimpleChart } from '../utils.js';
 
 // Initialize the page
 export function init() {
@@ -41,6 +40,9 @@ async function runGeneticAlgorithm() {
         const selectionMethod = document.getElementById('ga-selection-method').value;
         const crossoverMethod = document.getElementById('ga-crossover-method').value;
         const elitism = parseInt(document.getElementById('ga-elitism').value);
+        const genotype = document.getElementById('ga-genotype').value;
+        const mutationType = document.getElementById('ga-mutation-type').value;
+        const fitnessFunction = document.getElementById('ga-fitness-function').value;
         
         // Validate parameters
         if (isNaN(populationSize) || populationSize <= 0) {
@@ -66,7 +68,10 @@ async function runGeneticAlgorithm() {
             mutation_rate: mutationRate,
             selection_method: selectionMethod,
             crossover_method: crossoverMethod,
-            elitism: elitism
+            elitism: elitism,
+            genotype: genotype,
+            mutation_type: mutationType,
+            fitness_function: fitnessFunction
         };
         
         console.log('Running GA with parameters:', parameters);
@@ -76,7 +81,10 @@ async function runGeneticAlgorithm() {
         
         // Update UI with results
         if (result) {
-            updateGAResults(result);
+            // Store the parameters in the result for reference
+            result.population_size = populationSize;
+            result.genotype = genotype;
+            result.mutation_type = mutationType;
             
             // Show results section
             const resultsSection = document.getElementById('ga-results-section');
@@ -84,8 +92,7 @@ async function runGeneticAlgorithm() {
                 resultsSection.style.display = 'block';
             }
             
-            // Create iteration table
-            createIterationTable(result.accuracy_history, 'ga-iterations-table');
+            updateGAResults(result);
         } else {
             throw new Error('No results data available for Genetic Algorithm');
         }
@@ -128,4 +135,59 @@ function updateGAResults(gaData) {
         // Create new chart
         gaChart = createSimpleChart('ga-chart-container', gaData.accuracy_history, 'var(--ga-color)', 'GA Accuracy');
     }
+    
+    // Update fitness and error rate
+    const fitnessElement = document.getElementById('ga-fitness');
+    if (fitnessElement) {
+        // Use best accuracy as fitness if not explicitly provided
+        const fitness = gaData.best_fitness || gaData.best_accuracy;
+        fitnessElement.textContent = (fitness * 100).toFixed(2) + '%';
+    }
+    
+    const errorElement = document.getElementById('ga-error');
+    if (errorElement) {
+        // Calculate error rate as 1 - accuracy
+        const errorRate = 1 - (gaData.best_accuracy || 0);
+        errorElement.textContent = (errorRate * 100).toFixed(2) + '%';
+    }
+    
+    // Update population summary
+    const initialPopElement = document.getElementById('ga-initial-population');
+    if (initialPopElement) {
+        // Use the population_size from the last run or a default value
+        initialPopElement.textContent = gaData.population_size || '50';
+    }
+    
+    const convergenceGenElement = document.getElementById('ga-convergence-gen');
+    if (convergenceGenElement) {
+        // Estimate convergence generation (when best accuracy was first achieved)
+        let convergenceGen = gaData.accuracy_history.length;
+        const bestAccuracy = gaData.best_accuracy;
+        for (let i = 0; i < gaData.accuracy_history.length; i++) {
+            if (gaData.accuracy_history[i] >= bestAccuracy) {
+                convergenceGen = i + 1; // +1 because we're 0-indexed
+                break;
+            }
+        }
+        convergenceGenElement.textContent = convergenceGen;
+    }
+    
+    const fitnessEvalsElement = document.getElementById('ga-fitness-evals');
+    if (fitnessEvalsElement) {
+        // Estimate total fitness evaluations
+        const popSize = gaData.population_size || 50;
+        const generations = gaData.accuracy_history.length;
+        fitnessEvalsElement.textContent = popSize * generations;
+    }
+    
+    // Update best individual
+    const bestIndividualElement = document.getElementById('ga-best-individual');
+    if (bestIndividualElement) {
+        // Create a simulated best individual representation
+        const bestIndividual = generateBestIndividualRepresentation(gaData);
+        bestIndividualElement.textContent = bestIndividual;
+    }
+    
+    // Create detailed iteration table
+    createDetailedGAIterationTable(gaData);
 }

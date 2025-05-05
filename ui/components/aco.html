@@ -1,85 +1,208 @@
 <div class="algorithm-container aco-container">
-    <div class="grid grid-2">
-        <!-- Parameters Section -->
-        <div class="card aco-border">
-            <div class="card-header">
-                <h3><i class="fas fa-sliders-h"></i> ACO Parameters</h3>
+    <!-- Parameters Section at the top -->
+    <div class="card aco-border">
+        <div class="card-header">
+            <h3><i class="fas fa-sliders-h"></i> ACO Parameters</h3>
+        </div>
+        <div class="card-body">
+            <form id="aco-form">
+                <div class="grid grid-3">
+                    <!-- Column 1 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="aco-ant-count">Ant Count</label>
+                            <input type="number" id="aco-ant-count" class="form-control" value="20" min="5" max="100">
+                            <small>Number of ants in the colony (5-100)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="aco-iterations">Iterations</label>
+                            <input type="number" id="aco-iterations" class="form-control" value="100" min="10" max="500">
+                            <small>Number of iterations to run (10-500)</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 2 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="aco-pheromone-importance">Pheromone Importance (α)</label>
+                            <input type="range" id="aco-pheromone-importance" class="form-control" value="1.0" min="0.1" max="5.0" step="0.1">
+                            <div class="range-value">1.0</div>
+                            <small>Importance of pheromone trails (0.1-5.0)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="aco-heuristic-importance">Heuristic Importance (β)</label>
+                            <input type="range" id="aco-heuristic-importance" class="form-control" value="2.0" min="0.1" max="5.0" step="0.1">
+                            <div class="range-value">2.0</div>
+                            <small>Importance of heuristic information (0.1-5.0)</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 3 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="aco-evaporation-rate">Evaporation Rate (ρ)</label>
+                            <input type="range" id="aco-evaporation-rate" class="form-control" value="0.5" min="0.1" max="0.9" step="0.05">
+                            <div class="range-value">0.5</div>
+                            <small>Rate at which pheromones evaporate (0.1-0.9)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="aco-initial-pheromone">Initial Pheromone</label>
+                            <input type="number" id="aco-initial-pheromone" class="form-control" value="0.1" min="0.01" max="1.0" step="0.01">
+                            <small>Initial pheromone level on all paths (0.01-1.0)</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" id="aco-run-btn" class="btn btn-primary btn-block mt-3">
+                    <i class="fas fa-play"></i> Run Ant Colony Optimization
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Results Section in the middle -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-line"></i> Results</h3>
+        </div>
+        <div class="card-body">
+            <div class="grid grid-4">
+                <div class="result-card">
+                    <div class="result-label">Final Accuracy</div>
+                    <div id="aco-accuracy" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Execution Time</div>
+                    <div id="aco-time" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Best Path Length</div>
+                    <div id="aco-path-length" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Pheromone Strength</div>
+                    <div id="aco-pheromone-strength" class="result-value">-</div>
+                </div>
             </div>
-            <div class="card-body">
-                <form id="aco-form">
-                    <div class="form-group">
-                        <label for="aco-ant-count">Ant Count</label>
-                        <input type="number" id="aco-ant-count" class="form-control" value="20" min="5" max="100">
-                        <small>Number of ants in the colony (5-100)</small>
+            
+            <div class="chart-container" id="aco-chart-container">
+                <!-- Chart.js will render here -->
+            </div>
+            
+            <!-- Path Visualization -->
+            <div class="path-visualization mt-4">
+                <h4>Path Visualization</h4>
+                <div class="grid grid-2">
+                    <div class="canvas-container">
+                        <canvas id="aco-path-canvas" width="400" height="300"></canvas>
+                        <div class="canvas-caption">Network Graph with Pheromone Trails</div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="aco-iterations">Iterations</label>
-                        <input type="number" id="aco-iterations" class="form-control" value="100" min="10" max="500">
-                        <small>Number of iterations to run (10-500)</small>
+                    <div class="path-details">
+                        <h5>Best Path Details</h5>
+                        <div id="aco-best-path-details" class="code-block">
+                            <pre>No path data available yet</pre>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="aco-pheromone-importance">Pheromone Importance (α)</label>
-                        <input type="range" id="aco-pheromone-importance" class="form-control" value="1.0" min="0.1" max="5.0" step="0.1">
-                        <div class="range-value">1.0</div>
-                        <small>Importance of pheromone trails (0.1-5.0)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="aco-heuristic-importance">Heuristic Importance (β)</label>
-                        <input type="range" id="aco-heuristic-importance" class="form-control" value="2.0" min="0.1" max="5.0" step="0.1">
-                        <div class="range-value">2.0</div>
-                        <small>Importance of heuristic information (0.1-5.0)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="aco-evaporation-rate">Evaporation Rate (ρ)</label>
-                        <input type="range" id="aco-evaporation-rate" class="form-control" value="0.5" min="0.1" max="0.9" step="0.05">
-                        <div class="range-value">0.5</div>
-                        <small>Rate at which pheromones evaporate (0.1-0.9)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="aco-initial-pheromone">Initial Pheromone</label>
-                        <input type="number" id="aco-initial-pheromone" class="form-control" value="0.1" min="0.01" max="1.0" step="0.01">
-                        <small>Initial pheromone level on all paths (0.01-1.0)</small>
-                    </div>
-                    
-                    <button type="button" id="aco-run-btn" class="btn btn-primary btn-block">
-                        <i class="fas fa-play"></i> Run Ant Colony Optimization
-                    </button>
-                </form>
+                </div>
             </div>
         </div>
-        
-        <!-- Results Section -->
-        <div class="card">
-            <div class="card-header">
-                <h3><i class="fas fa-chart-line"></i> Results</h3>
+    </div>
+    
+    <!-- Iteration Data Table at the bottom -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-table"></i> Iteration Data</h3>
+        </div>
+        <div class="card-body">
+            <!-- Colony Summary -->
+            <div class="colony-summary mb-4">
+                <h4>Colony Summary</h4>
+                <div class="grid grid-3">
+                    <div class="summary-card">
+                        <div class="summary-label">Total Ants</div>
+                        <div id="aco-total-ants" class="summary-value">-</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Convergence Iteration</div>
+                        <div id="aco-convergence-iter" class="summary-value">-</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Pheromone Updates</div>
+                        <div id="aco-pheromone-updates" class="summary-value">-</div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="grid grid-2">
-                    <div class="result-card">
-                        <div class="result-label">Final Accuracy</div>
-                        <div id="aco-accuracy" class="result-value">-</div>
+            
+            <!-- Tabs for different data views -->
+            <div class="aco-data-tabs">
+                <ul class="nav nav-tabs" id="aco-data-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="iterations-tab" data-toggle="tab" href="#iterations-content">Iterations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pheromone-tab" data-toggle="tab" href="#pheromone-content">Pheromone Matrix</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="probability-tab" data-toggle="tab" href="#probability-content">Path Probabilities</a>
+                    </li>
+                </ul>
+                
+                <div class="tab-content mt-3">
+                    <!-- Iterations Tab -->
+                    <div class="tab-pane fade show active" id="iterations-content">
+                        <div id="aco-iterations-table">
+                            <!-- Iteration table will be rendered here -->
+                        </div>
                     </div>
                     
-                    <div class="result-card">
-                        <div class="result-label">Execution Time</div>
-                        <div id="aco-time" class="result-value">-</div>
+                    <!-- Pheromone Matrix Tab -->
+                    <div class="tab-pane fade" id="pheromone-content">
+                        <div class="matrix-visualization">
+                            <h5>Pheromone Matrix</h5>
+                            <div id="aco-pheromone-matrix" class="matrix-container">
+                                <!-- Pheromone matrix will be rendered here -->
+                            </div>
+                            <div class="matrix-legend mt-2">
+                                <div class="legend-item">
+                                    <div class="color-box low-pheromone"></div>
+                                    <span>Low Pheromone</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="color-box high-pheromone"></div>
+                                    <span>High Pheromone</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="chart-container" id="aco-chart-container">
-                    <!-- Chart.js will render here -->
-                </div>
-                
-                <!-- Iteration Data Table -->
-                <div class="table-container mt-4">
-                    <h4>Iteration Data</h4>
-                    <div id="aco-iterations-table">
-                        <!-- Iteration table will be rendered here -->
+                    
+                    <!-- Path Probabilities Tab -->
+                    <div class="tab-pane fade" id="probability-content">
+                        <div class="probability-table-container">
+                            <h5>Path Selection Probabilities</h5>
+                            <div id="aco-probability-table">
+                                <!-- Probability table will be rendered here -->
+                            </div>
+                            <div class="probability-formula mt-3">
+                                <h6>Probability Formula:</h6>
+                                <div class="formula-container">
+                                    <p>P<sub>ij</sub> = [τ<sub>ij</sub><sup>α</sup> × η<sub>ij</sub><sup>β</sup>] / Σ [τ<sub>ik</sub><sup>α</sup> × η<sub>ik</sub><sup>β</sup>]</p>
+                                    <p>Where:</p>
+                                    <ul>
+                                        <li>P<sub>ij</sub> = Probability of selecting path from i to j</li>
+                                        <li>τ<sub>ij</sub> = Pheromone level on path from i to j</li>
+                                        <li>η<sub>ij</sub> = Heuristic value (1/distance) from i to j</li>
+                                        <li>α = Pheromone importance parameter</li>
+                                        <li>β = Heuristic importance parameter</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

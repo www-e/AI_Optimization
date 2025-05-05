@@ -895,3 +895,316 @@ Running Genetic Algorithm...
 2025-05-04 21:13:02,045 - root - INFO - 127.0.0.1 - - [04/May/2025 21:13:02] "POST /api/run/ga HTTP/1.1" 200 -
 2025-05-04 21:13:46,207 - root - INFO - 
 Program terminated by user.
+2025-05-04 21:52:42,920 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:42] "GET / HTTP/1.1" 304 -
+2025-05-04 21:52:42,936 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:42] "GET /css/main.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,172 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/themes/variables.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,267 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/components/cards.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,267 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/base.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,268 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/layout/sidebar.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,268 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/components/forms.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,268 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/layout/layout.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,485 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/components/buttons.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,581 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/components/tables.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,584 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/components/charts.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,585 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /js/main.js HTTP/1.1" 304 -
+2025-05-04 21:52:43,585 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /css/components/utilities.css HTTP/1.1" 304 -
+2025-05-04 21:52:43,968 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /js/sidebar.js HTTP/1.1" 304 -
+2025-05-04 21:52:43,968 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /js/router.js HTTP/1.1" 304 -
+2025-05-04 21:52:43,969 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:43] "GET /js/algorithms/compare.js HTTP/1.1" 304 -
+2025-05-04 21:52:44,217 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:44] "GET /js/utils.js HTTP/1.1" 304 -
+2025-05-04 21:52:44,295 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:44] "GET /components/home.html HTTP/1.1" 304 -
+2025-05-04 21:52:44,534 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:44] "GET /js/pages/home.js HTTP/1.1" 304 -
+2025-05-04 21:52:45,601 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:45] "GET /components/ga.html HTTP/1.1" 304 -
+2025-05-04 21:52:45,923 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:45] "GET /js/pages/ga.js HTTP/1.1" 304 -
+2025-05-04 21:52:46,185 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:46] "GET /assets/results.json HTTP/1.1" 304 -
+2025-05-04 21:52:47,881 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:47] "GET /components/pso.html HTTP/1.1" 304 -
+2025-05-04 21:52:48,203 - root - INFO - 127.0.0.1 - - [04/May/2025 21:52:48] "GET /js/pages/pso.js HTTP/1.1" 304 -
+2025-05-04 21:59:22,156 - root - INFO - 127.0.0.1 - - [04/May/2025 21:59:22] "GET /components/tabu.html HTTP/1.1" 304 -
+2025-05-04 21:59:22,404 - root - INFO - 127.0.0.1 - - [04/May/2025 21:59:22] "GET /js/pages/tabu.js HTTP/1.1" 304 -
+2025-05-04 21:59:22,470 - root - INFO - 127.0.0.1 - - [04/May/2025 21:59:22] "GET /assets/results.json HTTP/1.1" 304 -
+2025-05-04 21:59:36,313 - root - INFO - Loading and preprocessing data...
+2025-05-04 21:59:36,330 - root - INFO - Neural network created with architecture: 4-8-3
+2025-05-04 21:59:36,333 - root - INFO - 
+Running Tabu Search...
+2025-05-04 21:59:36,334 - root - INFO - Tabu Search Parameters: iterations=100, tabu_list_size=10, neighborhood_size=19, step_size=0.34
+2025-05-04 21:59:36,600 - root - INFO - Tabu Search Best Accuracy: 1.0000, Time: 0.27s
+2025-05-04 21:59:36,756 - root - INFO - 127.0.0.1 - - [04/May/2025 21:59:36] "POST /api/run/tabu HTTP/1.1" 200 -
+2025-05-04 21:59:42,561 - root - INFO - 
+Running Tabu Search...
+2025-05-04 21:59:42,563 - root - INFO - Tabu Search Parameters: iterations=100, tabu_list_size=10, neighborhood_size=19, step_size=0.34
+2025-05-04 21:59:42,789 - root - INFO - Tabu Search Best Accuracy: 1.0000, Time: 0.23s
+2025-05-04 21:59:42,906 - root - INFO - 127.0.0.1 - - [04/May/2025 21:59:42] "POST /api/run/tabu HTTP/1.1" 200 -
+2025-05-04 22:01:47,141 - root - INFO - 127.0.0.1 - - [04/May/2025 22:01:47] "GET /components/aco.html HTTP/1.1" 304 -
+2025-05-04 22:01:47,408 - root - INFO - 127.0.0.1 - - [04/May/2025 22:01:47] "GET /js/pages/aco.js HTTP/1.1" 304 -
+2025-05-04 22:02:42,784 - root - INFO - 
+Running Ant Colony Optimization...
+2025-05-04 22:02:42,786 - root - INFO - ACO Parameters: ant_count=20, iterations=100, pheromone_importance=1.0, heuristic_importance=2.0, evaporation_rate=0.5
+2025-05-04 22:02:45,999 - root - INFO - ACO Best Accuracy: 0.6667, Time: 3.21s
+2025-05-04 22:02:46,112 - root - INFO - 127.0.0.1 - - [04/May/2025 22:02:46] "POST /api/run/aco HTTP/1.1" 200 -
+2025-05-04 22:25:02,330 - root - INFO - 
+Program terminated by user.
+2025-05-04 22:25:06,641 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:06] "GET / HTTP/1.1" 200 -
+2025-05-04 22:25:06,657 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:06] "GET /css/components/visualization.css HTTP/1.1" 200 -
+2025-05-04 22:25:06,904 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:06] "GET /css/main.css HTTP/1.1" 304 -
+2025-05-04 22:25:06,968 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:06] "GET /css/components/tables.css HTTP/1.1" 304 -
+2025-05-04 22:25:06,969 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:06] "GET /css/themes/variables.css HTTP/1.1" 304 -
+2025-05-04 22:25:07,224 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /css/base.css HTTP/1.1" 304 -
+2025-05-04 22:25:07,225 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /css/layout/layout.css HTTP/1.1" 304 -
+2025-05-04 22:25:07,225 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /css/layout/sidebar.css HTTP/1.1" 304 -
+2025-05-04 22:25:07,225 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /css/components/cards.css HTTP/1.1" 304 -
+2025-05-04 22:25:07,293 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /css/components/forms.css HTTP/1.1" 304 -
+2025-05-04 22:25:07,300 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /css/components/buttons.css HTTP/1.1" 304 -
+2025-05-04 22:25:07,547 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /css/components/charts.css HTTP/1.1" 304 -
+2025-05-04 22:25:07,550 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /css/components/utilities.css HTTP/1.1" 304 -
+2025-05-04 22:25:07,555 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /js/main.js HTTP/1.1" 304 -
+2025-05-04 22:25:07,938 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /js/router.js HTTP/1.1" 304 -
+2025-05-04 22:25:07,938 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /js/sidebar.js HTTP/1.1" 304 -
+2025-05-04 22:25:07,938 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:07] "GET /js/algorithms/compare.js HTTP/1.1" 304 -
+2025-05-04 22:25:08,199 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:08] "GET /js/utils.js HTTP/1.1" 304 -
+2025-05-04 22:25:08,253 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:08] "GET /components/home.html HTTP/1.1" 304 -
+2025-05-04 22:25:08,514 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:08] "GET /js/pages/home.js HTTP/1.1" 304 -
+2025-05-04 22:25:09,677 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:09] "GET /components/ga.html HTTP/1.1" 200 -
+2025-05-04 22:25:10,004 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:10] "GET /js/pages/ga.js HTTP/1.1" 304 -
+2025-05-04 22:25:10,249 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:10] "GET /assets/results.json HTTP/1.1" 304 -
+2025-05-04 22:25:14,304 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:14] "GET /components/pso.html HTTP/1.1" 200 -
+2025-05-04 22:25:14,625 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:14] "GET /js/pages/pso.js HTTP/1.1" 304 -
+2025-05-04 22:25:15,136 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:15] "GET /components/aco.html HTTP/1.1" 200 -
+2025-05-04 22:25:15,481 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:15] "GET /js/pages/aco.js HTTP/1.1" 200 -
+2025-05-04 22:25:17,719 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:17] code 404, message File not found
+2025-05-04 22:25:17,720 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:17] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 22:25:23,690 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:23] "GET / HTTP/1.1" 304 -
+2025-05-04 22:25:23,771 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:23] "GET /css/components/visualization.css HTTP/1.1" 304 -
+2025-05-04 22:25:23,983 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:23] code 404, message File not found
+2025-05-04 22:25:24,007 - root - INFO - 127.0.0.1 - - [04/May/2025 22:25:24] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 22:26:42,231 - root - INFO - Loading and preprocessing data...
+2025-05-04 22:26:42,242 - root - INFO - Neural network created with architecture: 4-8-3
+2025-05-04 22:26:42,243 - root - INFO - 
+Running Genetic Algorithm...
+2025-05-04 22:26:42,253 - root - INFO - GA Parameters: population_size=40, generations=50, mutation_rate=0.34
+2025-05-04 22:26:43,672 - root - INFO - GA Best Accuracy: 0.9667, Time: 1.42s
+2025-05-04 22:26:43,851 - root - INFO - 127.0.0.1 - - [04/May/2025 22:26:43] "POST /api/run/ga HTTP/1.1" 200 -
+2025-05-04 22:27:04,752 - root - INFO - 127.0.0.1 - - [04/May/2025 22:27:04] "GET /css/components/visualization.css HTTP/1.1" 304 -
+2025-05-04 22:27:05,157 - root - INFO - 127.0.0.1 - - [04/May/2025 22:27:05] code 404, message File not found
+2025-05-04 22:27:05,158 - root - INFO - 127.0.0.1 - - [04/May/2025 22:27:05] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 22:29:39,874 - root - INFO - 127.0.0.1 - - [04/May/2025 22:29:39] "GET /components/aco.html HTTP/1.1" 304 -
+2025-05-04 22:29:40,139 - root - INFO - 127.0.0.1 - - [04/May/2025 22:29:40] "GET /js/pages/aco.js HTTP/1.1" 304 -
+2025-05-04 22:29:49,336 - root - INFO - 
+Running Ant Colony Optimization...
+2025-05-04 22:29:49,338 - root - INFO - ACO Parameters: ant_count=20, iterations=100, pheromone_importance=2.1, heuristic_importance=2.0, evaporation_rate=0.5
+2025-05-04 22:29:53,035 - root - INFO - ACO Best Accuracy: 0.7000, Time: 3.70s
+2025-05-04 22:29:53,166 - root - INFO - 127.0.0.1 - - [04/May/2025 22:29:53] "POST /api/run/aco HTTP/1.1" 200 -
+2025-05-04 22:32:12,686 - root - INFO - 127.0.0.1 - - [04/May/2025 22:32:12] "GET /components/pso.html HTTP/1.1" 304 -
+2025-05-04 22:32:39,741 - root - INFO - 127.0.0.1 - - [04/May/2025 22:32:39] "GET /components/compare.html HTTP/1.1" 304 -
+2025-05-04 22:32:40,061 - root - INFO - 127.0.0.1 - - [04/May/2025 22:32:40] "GET /js/pages/compare.js HTTP/1.1" 304 -
+2025-05-04 22:32:40,327 - root - INFO - 127.0.0.1 - - [04/May/2025 22:32:40] "GET /assets/results.json HTTP/1.1" 304 -
+2025-05-04 22:32:42,560 - root - INFO - 
+Running all optimization algorithms...
+2025-05-04 22:32:42,561 - root - INFO - 
+Running Genetic Algorithm...
+2025-05-04 22:32:42,562 - root - INFO - GA Parameters: population_size=50, generations=100, mutation_rate=0.1
+2025-05-04 22:32:46,075 - root - INFO - GA Best Accuracy: 0.9333, Time: 3.51s
+2025-05-04 22:32:46,219 - root - INFO - 
+Running Particle Swarm Optimization...
+2025-05-04 22:32:46,221 - root - INFO - PSO Parameters: swarm_size=30, iterations=100, inertia=0.7, cognitive_coef=1.5, social_coef=1.5
+2025-05-04 22:32:46,769 - root - INFO - PSO Best Accuracy: 1.0000, Time: 0.55s
+2025-05-04 22:32:46,924 - root - INFO - 
+Running Ant Colony Optimization...
+2025-05-04 22:32:46,925 - root - INFO - ACO Parameters: ant_count=20, iterations=100, pheromone_importance=1.0, heuristic_importance=2.0, evaporation_rate=0.5
+2025-05-04 22:32:50,793 - root - INFO - ACO Best Accuracy: 0.5333, Time: 3.87s
+2025-05-04 22:32:50,960 - root - INFO - 
+Running Tabu Search...
+2025-05-04 22:32:50,961 - root - INFO - Tabu Search Parameters: iterations=100, tabu_list_size=10, neighborhood_size=20, step_size=0.1
+2025-05-04 22:32:51,367 - root - INFO - Tabu Search Best Accuracy: 1.0000, Time: 0.41s
+2025-05-04 22:32:51,533 - root - INFO - 
+Comparison of Results:
+2025-05-04 22:32:51,534 - root - INFO - --------------------------------------------------
+2025-05-04 22:32:51,536 - root - INFO - GA Best Accuracy: 0.9333333333333333
+2025-05-04 22:32:51,536 - root - INFO - PSO Best Accuracy: 1.0
+2025-05-04 22:32:51,537 - root - INFO - ACO Best Accuracy: 0.5333333333333333
+2025-05-04 22:32:51,537 - root - INFO - Tabu Search Best Accuracy: 1.0
+2025-05-04 22:32:51,538 - root - INFO - 
+PSO performed best with accuracy: 1.0
+2025-05-04 22:32:51,680 - root - INFO - 127.0.0.1 - - [04/May/2025 22:32:51] "POST /api/run/all HTTP/1.1" 200 -
+2025-05-04 22:34:59,404 - root - INFO - 127.0.0.1 - - [04/May/2025 22:34:59] "GET / HTTP/1.1" 304 -
+2025-05-04 22:34:59,441 - root - INFO - 127.0.0.1 - - [04/May/2025 22:34:59] "GET /css/components/tables.css HTTP/1.1" 304 -
+2025-05-04 22:34:59,670 - root - INFO - 127.0.0.1 - - [04/May/2025 22:34:59] "GET /css/components/visualization.css HTTP/1.1" 304 -
+2025-05-04 22:34:59,793 - root - INFO - 127.0.0.1 - - [04/May/2025 22:34:59] "GET /js/utils.js HTTP/1.1" 304 -
+2025-05-04 22:42:26,687 - root - INFO - 
+Program terminated by user.
+2025-05-04 22:42:31,653 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:31] "GET / HTTP/1.1" 304 -
+2025-05-04 22:42:31,673 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:31] "GET /css/components/visualization.css HTTP/1.1" 200 -
+2025-05-04 22:42:31,920 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:31] "GET /css/components/forms.css HTTP/1.1" 304 -
+2025-05-04 22:42:32,014 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:32] "GET /js/algorithms/compare.js HTTP/1.1" 304 -
+2025-05-04 22:42:35,626 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:35] "GET / HTTP/1.1" 304 -
+2025-05-04 22:42:37,260 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:37] "GET /css/main.css HTTP/1.1" 304 -
+2025-05-04 22:42:37,298 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:37] code 404, message File not found
+2025-05-04 22:42:37,303 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:37] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 22:42:41,000 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:41] "GET / HTTP/1.1" 304 -
+2025-05-04 22:42:41,061 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:41] code 404, message File not found
+2025-05-04 22:42:41,082 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:41] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 22:42:42,815 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:42] "GET /components/ga.html HTTP/1.1" 304 -
+2025-05-04 22:42:43,141 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:43] "GET /js/pages/ga.js HTTP/1.1" 200 -
+2025-05-04 22:42:51,988 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:51] "GET /css/components/buttons.css HTTP/1.1" 304 -
+2025-05-04 22:42:52,304 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:52] "GET /css/components/charts.css HTTP/1.1" 304 -
+2025-05-04 22:42:52,304 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:52] "GET /css/components/visualization.css HTTP/1.1" 304 -
+2025-05-04 22:42:52,305 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:52] "GET /css/components/utilities.css HTTP/1.1" 304 -
+2025-05-04 22:42:52,340 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:52] code 404, message File not found
+2025-05-04 22:42:52,345 - root - INFO - 127.0.0.1 - - [04/May/2025 22:42:52] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 22:43:05,464 - root - INFO - 
+Program terminated by user.
+2025-05-04 22:57:58,717 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:58] "GET / HTTP/1.1" 200 -
+2025-05-04 22:57:58,778 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:58] "GET /css/main.css HTTP/1.1" 200 -
+2025-05-04 22:57:58,973 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:58] "GET /css/components/tables.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,069 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/themes/variables.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,074 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/components/visualization.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,184 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/base.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,184 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/layout/layout.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,188 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/layout/sidebar.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,335 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/components/cards.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,378 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/components/forms.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,418 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/components/buttons.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,503 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/components/charts.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,503 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /css/components/utilities.css HTTP/1.1" 200 -
+2025-05-04 22:57:59,504 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /js/main.js HTTP/1.1" 200 -
+2025-05-04 22:57:59,886 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /js/router.js HTTP/1.1" 200 -
+2025-05-04 22:57:59,886 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /js/sidebar.js HTTP/1.1" 200 -
+2025-05-04 22:57:59,887 - root - INFO - 127.0.0.1 - - [04/May/2025 22:57:59] "GET /js/algorithms/compare.js HTTP/1.1" 200 -
+2025-05-04 22:58:00,141 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:00] "GET /js/utils.js HTTP/1.1" 200 -
+2025-05-04 22:58:00,245 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:00] "GET /components/home.html HTTP/1.1" 200 -
+2025-05-04 22:58:00,472 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:00] code 404, message File not found
+2025-05-04 22:58:00,473 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:00] "GET /favicon.ico HTTP/1.1" 404 -
+2025-05-04 22:58:00,580 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:00] "GET /js/pages/home.js HTTP/1.1" 200 -
+2025-05-04 22:58:31,522 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:31] "GET /components/ga.html HTTP/1.1" 200 -
+2025-05-04 22:58:31,845 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:31] "GET /js/pages/ga.js HTTP/1.1" 200 -
+2025-05-04 22:58:32,108 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:32] "GET /assets/results.json HTTP/1.1" 200 -
+2025-05-04 22:58:33,534 - root - INFO - Loading and preprocessing data...
+2025-05-04 22:58:33,553 - root - INFO - Neural network created with architecture: 4-8-3
+2025-05-04 22:58:33,554 - root - INFO - 
+Running Genetic Algorithm...
+2025-05-04 22:58:33,555 - root - INFO - GA Parameters: population_size=50, generations=100, mutation_rate=0.1
+2025-05-04 22:58:37,069 - root - INFO - GA Best Accuracy: 0.9333, Time: 3.51s
+2025-05-04 22:58:37,219 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:37] "POST /api/run/ga HTTP/1.1" 200 -
+2025-05-04 22:58:46,187 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:46] "GET /components/aco.html HTTP/1.1" 200 -
+2025-05-04 22:58:46,434 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:46] "GET /js/pages/aco.js HTTP/1.1" 200 -
+2025-05-04 22:58:48,802 - root - INFO - 
+Running Ant Colony Optimization...
+2025-05-04 22:58:48,804 - root - INFO - ACO Parameters: ant_count=20, iterations=100, pheromone_importance=1.0, heuristic_importance=2.0, evaporation_rate=0.5
+2025-05-04 22:58:52,680 - root - INFO - ACO Best Accuracy: 0.7333, Time: 3.88s
+2025-05-04 22:58:52,827 - root - INFO - 127.0.0.1 - - [04/May/2025 22:58:52] "POST /api/run/aco HTTP/1.1" 200 -
+2025-05-04 22:59:04,657 - root - INFO - 127.0.0.1 - - [04/May/2025 22:59:04] "GET /components/compare.html HTTP/1.1" 200 -
+2025-05-04 22:59:04,922 - root - INFO - 127.0.0.1 - - [04/May/2025 22:59:04] "GET /js/pages/compare.js HTTP/1.1" 200 -
+2025-05-04 22:59:09,282 - root - INFO - 
+Running all optimization algorithms...
+2025-05-04 22:59:09,285 - root - INFO - 
+Running Genetic Algorithm...
+2025-05-04 22:59:09,287 - root - INFO - GA Parameters: population_size=50, generations=100, mutation_rate=0.1
+2025-05-04 22:59:12,573 - root - INFO - GA Best Accuracy: 0.9667, Time: 3.29s
+2025-05-04 22:59:12,715 - root - INFO - 
+Running Particle Swarm Optimization...
+2025-05-04 22:59:12,719 - root - INFO - PSO Parameters: swarm_size=30, iterations=100, inertia=0.7, cognitive_coef=1.5, social_coef=1.5
+2025-05-04 22:59:13,177 - root - INFO - PSO Best Accuracy: 1.0000, Time: 0.46s
+2025-05-04 22:59:13,310 - root - INFO - 
+Running Ant Colony Optimization...
+2025-05-04 22:59:13,312 - root - INFO - ACO Parameters: ant_count=20, iterations=100, pheromone_importance=1.0, heuristic_importance=2.0, evaporation_rate=0.5
+2025-05-04 22:59:16,568 - root - INFO - ACO Best Accuracy: 0.6333, Time: 3.26s
+2025-05-04 22:59:16,712 - root - INFO - 
+Running Tabu Search...
+2025-05-04 22:59:16,715 - root - INFO - Tabu Search Parameters: iterations=100, tabu_list_size=10, neighborhood_size=20, step_size=0.1
+2025-05-04 22:59:17,092 - root - INFO - Tabu Search Best Accuracy: 1.0000, Time: 0.38s
+2025-05-04 22:59:17,237 - root - INFO - 
+Comparison of Results:
+2025-05-04 22:59:17,238 - root - INFO - --------------------------------------------------
+2025-05-04 22:59:17,239 - root - INFO - GA Best Accuracy: 0.9666666666666667
+2025-05-04 22:59:17,240 - root - INFO - PSO Best Accuracy: 1.0
+2025-05-04 22:59:17,241 - root - INFO - ACO Best Accuracy: 0.6333333333333333
+2025-05-04 22:59:17,241 - root - INFO - Tabu Search Best Accuracy: 1.0
+2025-05-04 22:59:17,242 - root - INFO - 
+PSO performed best with accuracy: 1.0
+2025-05-04 22:59:17,388 - root - INFO - 127.0.0.1 - - [04/May/2025 22:59:17] "POST /api/run/all HTTP/1.1" 200 -
+2025-05-04 22:59:38,812 - root - INFO - 127.0.0.1 - - [04/May/2025 22:59:38] "GET /components/pso.html HTTP/1.1" 200 -
+2025-05-04 22:59:39,076 - root - INFO - 127.0.0.1 - - [04/May/2025 22:59:39] "GET /js/pages/pso.js HTTP/1.1" 200 -
+2025-05-04 22:59:40,233 - root - INFO - 
+Running Particle Swarm Optimization...
+2025-05-04 22:59:40,234 - root - INFO - PSO Parameters: swarm_size=30, iterations=100, inertia=0.7, cognitive_coef=1.5, social_coef=1.5
+2025-05-04 22:59:40,719 - root - INFO - PSO Best Accuracy: 1.0000, Time: 0.49s
+2025-05-04 22:59:40,898 - root - INFO - 127.0.0.1 - - [04/May/2025 22:59:40] "POST /api/run/pso HTTP/1.1" 200 -
+2025-05-04 22:59:44,203 - root - INFO - 
+Running Ant Colony Optimization...
+2025-05-04 22:59:44,204 - root - INFO - ACO Parameters: ant_count=20, iterations=100, pheromone_importance=1.0, heuristic_importance=2.0, evaporation_rate=0.5
+2025-05-04 22:59:47,954 - root - INFO - ACO Best Accuracy: 0.7000, Time: 3.75s
+2025-05-04 22:59:48,091 - root - INFO - 127.0.0.1 - - [04/May/2025 22:59:48] "POST /api/run/aco HTTP/1.1" 200 -
+2025-05-04 23:00:01,104 - root - INFO - 127.0.0.1 - - [04/May/2025 23:00:01] "GET /css/components/visualization.css HTTP/1.1" 304 -
+2025-05-04 23:00:01,495 - root - INFO - 127.0.0.1 - - [04/May/2025 23:00:01] code 404, message File not found
+2025-05-04 23:00:01,497 - root - INFO - 127.0.0.1 - - [04/May/2025 23:00:01] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 23:00:32,834 - root - INFO - 127.0.0.1 - - [04/May/2025 23:00:32] "GET / HTTP/1.1" 304 -
+2025-05-04 23:00:34,448 - root - INFO - 127.0.0.1 - - [04/May/2025 23:00:34] "GET /js/pages/ga.js HTTP/1.1" 304 -
+2025-05-04 23:03:33,178 - root - INFO - 127.0.0.1 - - [04/May/2025 23:03:33] "GET /assets/results.json HTTP/1.1" 200 -
+2025-05-04 23:03:42,520 - root - INFO - 127.0.0.1 - - [04/May/2025 23:03:42] "GET /components/tabu.html HTTP/1.1" 200 -
+2025-05-04 23:03:42,842 - root - INFO - 127.0.0.1 - - [04/May/2025 23:03:42] "GET /js/pages/tabu.js HTTP/1.1" 200 -
+2025-05-04 23:03:45,882 - root - INFO - 
+Running Tabu Search...
+2025-05-04 23:03:45,884 - root - INFO - Tabu Search Parameters: iterations=100, tabu_list_size=10, neighborhood_size=20, step_size=0.1
+2025-05-04 23:03:46,362 - root - INFO - Tabu Search Best Accuracy: 1.0000, Time: 0.48s
+2025-05-04 23:03:46,511 - root - INFO - 127.0.0.1 - - [04/May/2025 23:03:46] "POST /api/run/tabu HTTP/1.1" 200 -
+2025-05-04 23:05:58,469 - root - INFO - 
+Running Tabu Search...
+2025-05-04 23:05:58,470 - root - INFO - Tabu Search Parameters: iterations=100, tabu_list_size=10, neighborhood_size=20, step_size=0.1
+2025-05-04 23:05:58,861 - root - INFO - Tabu Search Best Accuracy: 1.0000, Time: 0.39s
+2025-05-04 23:05:59,039 - root - INFO - 127.0.0.1 - - [04/May/2025 23:05:59] "POST /api/run/tabu HTTP/1.1" 200 -
+2025-05-04 23:06:06,643 - root - INFO - 127.0.0.1 - - [04/May/2025 23:06:06] "GET /css/components/visualization.css HTTP/1.1" 304 -
+2025-05-04 23:06:06,969 - root - INFO - 127.0.0.1 - - [04/May/2025 23:06:06] code 404, message File not found
+2025-05-04 23:06:06,970 - root - INFO - 127.0.0.1 - - [04/May/2025 23:06:06] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 23:10:28,517 - root - INFO - 
+Program terminated by user.
+2025-05-04 23:10:33,201 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:33] "GET / HTTP/1.1" 304 -
+2025-05-04 23:10:33,216 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:33] "GET /css/components/tables.css HTTP/1.1" 304 -
+2025-05-04 23:10:33,454 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:33] "GET /css/components/visualization.css HTTP/1.1" 304 -
+2025-05-04 23:10:33,577 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:33] "GET /js/utils.js HTTP/1.1" 304 -
+2025-05-04 23:10:35,423 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:35] "GET / HTTP/1.1" 304 -
+2025-05-04 23:10:37,059 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:37] code 404, message File not found
+2025-05-04 23:10:37,060 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:37] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 23:10:41,819 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:41] "GET / HTTP/1.1" 304 -
+2025-05-04 23:10:42,256 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:42] code 404, message File not found
+2025-05-04 23:10:42,272 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:42] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 -
+2025-05-04 23:10:44,573 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:44] "GET /components/ga.html HTTP/1.1" 304 -
+2025-05-04 23:10:44,825 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:44] "GET /js/pages/ga.js HTTP/1.1" 200 -
+2025-05-04 23:10:44,893 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:44] "GET /assets/results.json HTTP/1.1" 304 -
+2025-05-04 23:10:49,306 - root - INFO - Loading and preprocessing data...
+2025-05-04 23:10:49,318 - root - INFO - Neural network created with architecture: 4-8-3
+2025-05-04 23:10:49,318 - root - INFO - 
+Running Genetic Algorithm...
+2025-05-04 23:10:49,319 - root - INFO - GA Parameters: population_size=50, generations=100, mutation_rate=0.1
+2025-05-04 23:10:53,569 - root - INFO - GA Best Accuracy: 0.9667, Time: 4.25s
+2025-05-04 23:10:53,788 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:53] "POST /api/run/ga HTTP/1.1" 200 -
+2025-05-04 23:10:58,654 - root - INFO - 127.0.0.1 - - [04/May/2025 23:10:58] "GET /components/pso.html HTTP/1.1" 304 -
+2025-05-04 23:11:34,828 - root - INFO - 127.0.0.1 - - [04/May/2025 23:11:34] "GET /components/tabu.html HTTP/1.1" 304 -
+2025-05-04 23:11:35,692 - root - INFO - 
+Running Tabu Search...
+2025-05-04 23:11:35,693 - root - INFO - Tabu Search Parameters: iterations=100, tabu_list_size=10, neighborhood_size=20, step_size=0.1
+2025-05-04 23:11:36,189 - root - INFO - Tabu Search Best Accuracy: 0.9667, Time: 0.50s
+2025-05-04 23:11:36,348 - root - INFO - 127.0.0.1 - - [04/May/2025 23:11:36] "POST /api/run/tabu HTTP/1.1" 200 -
+2025-05-04 23:13:12,330 - root - INFO - 
+Running Tabu Search...
+2025-05-04 23:13:12,331 - root - INFO - Tabu Search Parameters: iterations=100, tabu_list_size=10, neighborhood_size=20, step_size=0.1
+2025-05-04 23:13:12,691 - root - INFO - Tabu Search Best Accuracy: 1.0000, Time: 0.36s
+2025-05-04 23:13:12,818 - root - INFO - 127.0.0.1 - - [04/May/2025 23:13:12] "POST /api/run/tabu HTTP/1.1" 200 -
+2025-05-04 23:15:08,765 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:08] "GET / HTTP/1.1" 304 -
+2025-05-04 23:15:08,799 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:08] "GET /css/components/visualization.css HTTP/1.1" 200 -
+2025-05-04 23:15:09,018 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:09] "GET /js/algorithms/compare.js HTTP/1.1" 304 -
+2025-05-04 23:15:10,256 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:10] "GET /js/pages/ga.js HTTP/1.1" 304 -
+2025-05-04 23:15:10,518 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:10] "GET /assets/results.json HTTP/1.1" 304 -
+2025-05-04 23:15:14,584 - root - INFO - 
+Running Genetic Algorithm...
+2025-05-04 23:15:14,585 - root - INFO - GA Parameters: population_size=50, generations=100, mutation_rate=0.1
+2025-05-04 23:15:17,917 - root - INFO - GA Best Accuracy: 0.9333, Time: 3.33s
+2025-05-04 23:15:18,028 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:18] "POST /api/run/ga HTTP/1.1" 200 -
+2025-05-04 23:15:20,669 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:20] "GET /js/pages/pso.js HTTP/1.1" 200 -
+2025-05-04 23:15:22,476 - root - INFO - 
+Running Particle Swarm Optimization...
+2025-05-04 23:15:22,478 - root - INFO - PSO Parameters: swarm_size=30, iterations=100, inertia=0.7, cognitive_coef=1.5, social_coef=1.5
+2025-05-04 23:15:22,866 - root - INFO - PSO Best Accuracy: 1.0000, Time: 0.39s
+2025-05-04 23:15:22,975 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:22] "POST /api/run/pso HTTP/1.1" 200 -
+2025-05-04 23:15:34,036 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:34] "GET /components/aco.html HTTP/1.1" 304 -
+2025-05-04 23:15:34,300 - root - INFO - 127.0.0.1 - - [04/May/2025 23:15:34] "GET /js/pages/aco.js HTTP/1.1" 304 -
+2025-05-04 23:15:46,604 - root - INFO - 
+Program terminated by user.

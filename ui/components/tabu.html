@@ -1,89 +1,212 @@
 <div class="algorithm-container tabu-container">
-    <div class="grid grid-2">
-        <!-- Parameters Section -->
-        <div class="card tabu-border">
-            <div class="card-header">
-                <h3><i class="fas fa-sliders-h"></i> Tabu Search Parameters</h3>
-            </div>
-            <div class="card-body">
-                <form id="tabu-form">
-                    <div class="form-group">
-                        <label for="tabu-iterations">Iterations</label>
-                        <input type="number" id="tabu-iterations" class="form-control" value="100" min="10" max="500">
-                        <small>Number of iterations to run (10-500)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="tabu-list-size">Tabu List Size</label>
-                        <input type="number" id="tabu-list-size" class="form-control" value="10" min="1" max="50">
-                        <small>Number of recent solutions to keep in tabu list (1-50)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="tabu-neighborhood-size">Neighborhood Size</label>
-                        <input type="number" id="tabu-neighborhood-size" class="form-control" value="20" min="5" max="100">
-                        <small>Number of neighboring solutions to evaluate (5-100)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="tabu-step-size">Step Size</label>
-                        <input type="range" id="tabu-step-size" class="form-control" value="0.1" min="0.01" max="0.5" step="0.01">
-                        <div class="range-value">0.1</div>
-                        <small>Size of perturbation for generating neighbors (0.01-0.5)</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="tabu-aspiration">Aspiration Criterion</label>
-                        <select id="tabu-aspiration" class="form-control">
-                            <option value="best">Best Solution</option>
-                            <option value="none">None</option>
-                        </select>
-                        <small>Condition to override tabu status</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="tabu-diversification">Diversification</label>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="tabu-diversification" checked>
-                            <label for="tabu-diversification">Enable diversification strategy</label>
+    <!-- Parameters Section at the top -->
+    <div class="card tabu-border">
+        <div class="card-header">
+            <h3><i class="fas fa-sliders-h"></i> Tabu Search Parameters</h3>
+        </div>
+        <div class="card-body">
+            <form id="tabu-form">
+                <div class="grid grid-3">
+                    <!-- Column 1 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="tabu-iterations">Iterations</label>
+                            <input type="number" id="tabu-iterations" class="form-control" value="100" min="10" max="500">
+                            <small>Number of iterations to run (10-500)</small>
                         </div>
-                        <small>Periodically move to unexplored regions of the search space</small>
+                        
+                        <div class="form-group">
+                            <label for="tabu-list-size">Tabu List Size</label>
+                            <input type="number" id="tabu-list-size" class="form-control" value="10" min="1" max="50">
+                            <small>Number of recent solutions to keep in tabu list (1-50)</small>
+                        </div>
                     </div>
                     
-                    <button type="button" id="tabu-run-btn" class="btn btn-primary btn-block">
-                        <i class="fas fa-play"></i> Run Tabu Search
-                    </button>
-                </form>
+                    <!-- Column 2 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="tabu-neighborhood-size">Neighborhood Size</label>
+                            <input type="number" id="tabu-neighborhood-size" class="form-control" value="20" min="5" max="100">
+                            <small>Number of neighboring solutions to evaluate (5-100)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tabu-step-size">Step Size</label>
+                            <input type="range" id="tabu-step-size" class="form-control" value="0.1" min="0.01" max="0.5" step="0.01">
+                            <div class="range-value">0.1</div>
+                            <small>Size of perturbation for generating neighbors (0.01-0.5)</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 3 -->
+                    <div>
+                        <div class="form-group">
+                            <label for="tabu-aspiration">Aspiration Criterion</label>
+                            <select id="tabu-aspiration" class="form-control">
+                                <option value="best">Best Solution</option>
+                                <option value="none">None</option>
+                            </select>
+                            <small>Condition to override tabu status</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tabu-diversification">Diversification</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="tabu-diversification" checked>
+                                <label for="tabu-diversification">Enable diversification strategy</label>
+                            </div>
+                            <small>Periodically move to unexplored regions of the search space</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" id="tabu-run-btn" class="btn btn-primary btn-block mt-3">
+                    <i class="fas fa-play"></i> Run Tabu Search
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Results Section in the middle -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-chart-line"></i> Results</h3>
+        </div>
+        <div class="card-body">
+            <div class="grid grid-4">
+                <div class="result-card">
+                    <div class="result-label">Final Accuracy</div>
+                    <div id="tabu-accuracy" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Execution Time</div>
+                    <div id="tabu-time" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Best Solution Fitness</div>
+                    <div id="tabu-best-fitness" class="result-value">-</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-label">Tabu Moves</div>
+                    <div id="tabu-move-count" class="result-value">-</div>
+                </div>
+            </div>
+            
+            <div class="chart-container" id="tabu-chart-container">
+                <!-- Chart.js will render here -->
+            </div>
+            
+            <!-- Search Visualization -->
+            <div class="search-visualization mt-4">
+                <h4>Search Space Visualization</h4>
+                <div class="grid grid-2">
+                    <div class="canvas-container">
+                        <canvas id="tabu-search-canvas" width="400" height="300"></canvas>
+                        <div class="canvas-caption">Search Trajectory and Tabu Regions</div>
+                    </div>
+                    <div class="move-details">
+                        <h5>Move Details</h5>
+                        <div id="tabu-move-details" class="code-block">
+                            <pre>No move data available yet</pre>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <!-- Results Section -->
-        <div class="card">
-            <div class="card-header">
-                <h3><i class="fas fa-chart-line"></i> Results</h3>
+    </div>
+    
+    <!-- Iteration Data Table at the bottom -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-table"></i> Iteration Data</h3>
+        </div>
+        <div class="card-body">
+            <!-- Search Summary -->
+            <div class="search-summary mb-4">
+                <h4>Search Summary</h4>
+                <div class="grid grid-3">
+                    <div class="summary-card">
+                        <div class="summary-label">Total Moves</div>
+                        <div id="tabu-total-moves" class="summary-value">-</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Tabu Rejections</div>
+                        <div id="tabu-rejections" class="summary-value">-</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">Aspiration Criteria Met</div>
+                        <div id="tabu-aspiration-count" class="summary-value">-</div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="grid grid-2">
-                    <div class="result-card">
-                        <div class="result-label">Final Accuracy</div>
-                        <div id="tabu-accuracy" class="result-value">-</div>
+            
+            <!-- Tabs for different data views -->
+            <div class="tabu-data-tabs">
+                <ul class="nav nav-tabs" id="tabu-data-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="iterations-tab" data-toggle="tab" href="#tabu-iterations-content">Iterations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tabu-list-tab" data-toggle="tab" href="#tabu-list-content">Tabu List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="neighborhood-tab" data-toggle="tab" href="#neighborhood-content">Neighborhood</a>
+                    </li>
+                </ul>
+                
+                <div class="tab-content mt-3">
+                    <!-- Iterations Tab -->
+                    <div class="tab-pane fade show active" id="tabu-iterations-content">
+                        <div id="tabu-iterations-table">
+                            <!-- Iteration table will be rendered here -->
+                        </div>
                     </div>
                     
-                    <div class="result-card">
-                        <div class="result-label">Execution Time</div>
-                        <div id="tabu-time" class="result-value">-</div>
+                    <!-- Tabu List Tab -->
+                    <div class="tab-pane fade" id="tabu-list-content">
+                        <div class="tabu-list-visualization">
+                            <h5>Current Tabu List</h5>
+                            <div id="tabu-list-table" class="table-container">
+                                <!-- Tabu list table will be rendered here -->
+                            </div>
+                            <div class="tabu-tenure mt-3">
+                                <h6>Tabu Tenure:</h6>
+                                <div class="tenure-container">
+                                    <p>Each move remains tabu for <span id="tabu-tenure-value">10</span> iterations</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="chart-container" id="tabu-chart-container">
-                    <!-- Chart.js will render here -->
-                </div>
-                
-                <!-- Iteration Data Table -->
-                <div class="table-container mt-4">
-                    <h4>Iteration Data</h4>
-                    <div id="tabu-iterations-table">
-                        <!-- Iteration table will be rendered here -->
+                    
+                    <!-- Neighborhood Tab -->
+                    <div class="tab-pane fade" id="neighborhood-content">
+                        <div class="neighborhood-analysis">
+                            <h5>Neighborhood Analysis</h5>
+                            <div id="tabu-neighborhood-chart" class="chart-container">
+                                <!-- Neighborhood chart will be rendered here -->
+                            </div>
+                            <div class="neighborhood-formula mt-3">
+                                <h6>Move Selection Formula:</h6>
+                                <div class="formula-container">
+                                    <p>Select s' ∈ N(s) such that:</p>
+                                    <ul>
+                                        <li>s' maximizes f(s') if s' ∉ TabuList, or</li>
+                                        <li>s' maximizes f(s') if f(s') > f(s<sub>best</sub>) (aspiration criterion)</li>
+                                    </ul>
+                                    <p>Where:</p>
+                                    <ul>
+                                        <li>s = Current solution</li>
+                                        <li>s' = Candidate solution</li>
+                                        <li>N(s) = Neighborhood of s</li>
+                                        <li>f(s) = Fitness function</li>
+                                        <li>s<sub>best</sub> = Best solution found so far</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

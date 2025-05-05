@@ -1,5 +1,5 @@
 // Compare page functionality
-import { showLoading, hideLoading, displayErrorMessage, fetchResults, formatAlgorithmName, getAlgorithmColor, createChart, createIterationTable } from '../utils.js';
+import { showLoading, hideLoading, displayErrorMessage, fetchResults, formatAlgorithmName, getAlgorithmColor, createChart } from '../utils.js';
 import { runAllAlgorithms } from '../algorithms/compare.js';
 
 // Initialize the page
@@ -89,6 +89,8 @@ function updateComparisonResults(results) {
     // Arrays to store data for charts
     const algorithmNames = [];
     const accuracyData = [];
+    const fitnessData = [];
+    const errorData = [];
     const timeData = [];
     const convergenceData = [];
     const accuracyHistories = {};
@@ -110,6 +112,8 @@ function updateComparisonResults(results) {
     // Process each algorithm
     algorithms.forEach(algo => {
         const accuracyElement = document.getElementById(`compare-${algo}-accuracy`);
+        const fitnessElement = document.getElementById(`compare-${algo}-fitness`);
+        const errorElement = document.getElementById(`compare-${algo}-error`);
         const timeElement = document.getElementById(`compare-${algo}-time`);
         const convergenceElement = document.getElementById(`compare-${algo}-convergence`);
         
@@ -131,6 +135,29 @@ function updateComparisonResults(results) {
             } else {
                 accuracyElement.textContent = 'N/A';
                 accuracyData.push(0);
+            }
+            
+            // Update fitness
+            const fitness = algoData?.best_fitness !== undefined ? algoData.best_fitness : 
+                         accuracy !== undefined ? accuracy : undefined;
+            
+            if (fitnessElement && fitness !== undefined) {
+                const fitnessPercent = (fitness * 100).toFixed(2);
+                fitnessElement.textContent = `${fitnessPercent}%`;
+                fitnessData.push(parseFloat(fitnessPercent));
+            } else {
+                fitnessElement.textContent = 'N/A';
+                fitnessData.push(0);
+            }
+            
+            // Update error rate
+            if (errorElement && accuracy !== undefined) {
+                const errorRate = (1 - accuracy) * 100;
+                errorElement.textContent = `${errorRate.toFixed(2)}%`;
+                errorData.push(errorRate);
+            } else {
+                errorElement.textContent = 'N/A';
+                errorData.push(0);
             }
             
             // Update time
@@ -204,13 +231,134 @@ function updateComparisonResults(results) {
                 }
             }
             
-            // Create the iteration table
-            createIterationTable(algoData.accuracy_history, `compare-${algo}-iterations-table`);
+            // Create the iteration table based on algorithm type
+            if (algo === 'ga') {
+                createDetailedGAIterationTable(algoData, `compare-${algo}-iterations-table`);
+            } else {
+                createIterationTable(algoData.accuracy_history, `compare-${algo}-iterations-table`);
+            }
         }
     });
 
     // Update analysis
     updateAnalysis(results, algorithmNames, accuracyData, timeData, convergenceData);
+}
+
+// Create detailed GA iteration table
+function createDetailedGAIterationTable(gaData, containerId) {
+    if (!gaData.accuracy_history || !gaData.accuracy_history.length) return;
+    
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    // Clear container
+    container.innerHTML = '';
+    
+    // Create table element
+    const table = document.createElement('table');
+    table.className = 'iteration-table';
+    
+    // Create table header
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    ['Iteration', 'Initial Population', 'Fitness', 'Error Rate', 'Change'].forEach(text => {
+        const th = document.createElement('th');
+        th.textContent = text;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+    
+    // Create table body
+    const tbody = document.createElement('tbody');
+    
+    // Determine which iterations to show
+    let iterations = [];
+    const maxRows = 20;
+    
+    if (gaData.accuracy_history.length <= maxRows || gaData._showAll) {
+        // Show all iterations if there are fewer than maxRows or if showAll flag is set
+        iterations = Array.from({ length: gaData.accuracy_history.length }, (_, i) => i);
+    } else {
+        // Show first 5, last 5, and some in the middle
+        const firstCount = 5;
+        const lastCount = 5;
+        const middleCount = maxRows - firstCount - lastCount;
+        
+        // First iterations
+        for (let i = 0; i < firstCount; i++) {
+            iterations.push(i);
+        }
+        
+        // Middle iterations (evenly distributed)
+        if (middleCount > 0) {
+            const step = (gaData.accuracy_history.length - firstCount - lastCount) / (middleCount + 1);
+            for (let i = 1; i <= middleCount; i++) {
+                iterations.push(Math.floor(firstCount + i * step));
+            }
+        }
+        
+        // Last iterations
+        for (let i = gaData.accuracy_history.length - lastCount; i < gaData.accuracy_history.length; i++) {
+            iterations.push(i);
+        }
+    }
+    
+    // Add rows for selected iterations
+    iterations.forEach(i => {
+        const row = document.createElement('tr');
+        
+        // Iteration number cell
+        const iterCell = document.createElement('td');
+        iterCell.textContent = i + 1;
+        row.appendChild(iterCell);
+        
+        // Initial population cell
+        const popCell = document.createElement('td');
+        popCell.textContent = gaData.population_size || 50;
+        row.appendChild(popCell);
+        
+        // Fitness cell
+        const fitnessCell = document.createElement('td');
+        const accuracy = gaData.accuracy_history[i];
+        const fitnessValue = (accuracy * 100).toFixed(2);
+        fitnessCell.textContent = `${fitnessValue}%`;
+        row.appendChild(fitnessCell);
+        
+        // Error rate cell
+        const errorCell = document.createElement('td');
+        const errorRate = (1 - accuracy) * 100;
+        errorCell.textContent = `${errorRate.toFixed(2)}%`;
+        row.appendChild(errorCell);
+        
+        // Change cell
+        const changeCell = document.createElement('td');
+        if (i > 0) {
+            const change = ((accuracy - gaData.accuracy_history[i-1]) * 100).toFixed(2);
+            const isPositive = change >= 0;
+            changeCell.textContent = isPositive ? `+${change}%` : `${change}%`;
+            changeCell.className = isPositive ? 'positive-change' : 'negative-change';
+        } else {
+            changeCell.textContent = '-';
+        }
+        row.appendChild(changeCell);
+        
+        tbody.appendChild(row);
+    });
+    
+    table.appendChild(tbody);
+    container.appendChild(table);
+    
+    // Add 'Show All' button if data exceeds maxRows and not already showing all
+    if (gaData.accuracy_history.length > maxRows && !gaData._showAll) {
+        const showAllButton = document.createElement('button');
+        showAllButton.className = 'btn btn-sm btn-outline-primary mt-2';
+        showAllButton.textContent = 'Show All Iterations';
+        showAllButton.addEventListener('click', () => {
+            createDetailedGAIterationTable({ ...gaData, _showAll: true }, containerId);
+        });
+        container.appendChild(showAllButton);
+    }
 }
 
 // Create accuracy comparison bar chart
@@ -753,17 +901,38 @@ function updateAnalysis(results, algorithmNames, accuracyData, timeData, converg
     analysisElement.innerHTML = analysisHTML;
 }
 
-// Load parameter summaries from the individual algorithm pages
+// Load parameter summaries from form values
 function loadParameterSummaries() {
     // GA parameters
-    updateParameterSummary('ga', {
-        'population-size': document.getElementById('ga-population-size')?.value || '50',
-        'generations': document.getElementById('ga-generations')?.value || '100',
-        'mutation-rate': document.getElementById('ga-mutation-rate')?.value || '0.1',
-        'selection-method': document.getElementById('ga-selection-method')?.options[document.getElementById('ga-selection-method')?.selectedIndex || 0]?.text || 'Tournament',
-        'crossover-method': document.getElementById('ga-crossover-method')?.options[document.getElementById('ga-crossover-method')?.selectedIndex || 0]?.text || 'Single Point',
-        'elitism': document.getElementById('ga-elitism')?.value || '2'
-    });
+    document.getElementById('ga-summary-population-size').textContent = document.getElementById('ga-population-size')?.value || '50';
+    document.getElementById('ga-summary-generations').textContent = document.getElementById('ga-generations')?.value || '100';
+    document.getElementById('ga-summary-mutation-rate').textContent = document.getElementById('ga-mutation-rate')?.value || '0.1';
+    
+    const gaGenotype = document.getElementById('ga-genotype');
+    if (gaGenotype) {
+        const selectedOption = gaGenotype.options[gaGenotype.selectedIndex];
+        document.getElementById('ga-summary-genotype').textContent = selectedOption ? selectedOption.text : 'Binary';
+    }
+    
+    const gaSelectionMethod = document.getElementById('ga-selection-method');
+    if (gaSelectionMethod) {
+        const selectedOption = gaSelectionMethod.options[gaSelectionMethod.selectedIndex];
+        document.getElementById('ga-summary-selection-method').textContent = selectedOption ? selectedOption.text : 'Tournament';
+    }
+    
+    const gaCrossoverMethod = document.getElementById('ga-crossover-method');
+    if (gaCrossoverMethod) {
+        const selectedOption = gaCrossoverMethod.options[gaCrossoverMethod.selectedIndex];
+        document.getElementById('ga-summary-crossover-method').textContent = selectedOption ? selectedOption.text : 'Single Point';
+    }
+    
+    const gaMutationType = document.getElementById('ga-mutation-type');
+    if (gaMutationType) {
+        const selectedOption = gaMutationType.options[gaMutationType.selectedIndex];
+        document.getElementById('ga-summary-mutation-type').textContent = selectedOption ? selectedOption.text : 'Bit Flip';
+    }
+    
+    document.getElementById('ga-summary-elitism').textContent = document.getElementById('ga-elitism')?.value || '2';
     
     // PSO parameters
     updateParameterSummary('pso', {

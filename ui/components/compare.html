@@ -19,6 +19,8 @@
                             <tr>
                                 <th>Algorithm</th>
                                 <th>Final Accuracy</th>
+                                <th>Best Fitness</th>
+                                <th>Error Rate</th>
                                 <th>Execution Time</th>
                                 <th>Convergence Speed</th>
                             </tr>
@@ -27,24 +29,32 @@
                             <tr>
                                 <td><span class="ga-text"><i class="fas fa-dna"></i> Genetic Algorithm</span></td>
                                 <td id="compare-ga-accuracy">-</td>
+                                <td id="compare-ga-fitness">-</td>
+                                <td id="compare-ga-error">-</td>
                                 <td id="compare-ga-time">-</td>
                                 <td id="compare-ga-convergence">-</td>
                             </tr>
                             <tr>
                                 <td><span class="pso-text"><i class="fas fa-bird"></i> Particle Swarm</span></td>
                                 <td id="compare-pso-accuracy">-</td>
+                                <td id="compare-pso-fitness">-</td>
+                                <td id="compare-pso-error">-</td>
                                 <td id="compare-pso-time">-</td>
                                 <td id="compare-pso-convergence">-</td>
                             </tr>
                             <tr>
                                 <td><span class="aco-text"><i class="fas fa-bug"></i> Ant Colony</span></td>
                                 <td id="compare-aco-accuracy">-</td>
+                                <td id="compare-aco-fitness">-</td>
+                                <td id="compare-aco-error">-</td>
                                 <td id="compare-aco-time">-</td>
                                 <td id="compare-aco-convergence">-</td>
                             </tr>
                             <tr>
                                 <td><span class="tabu-text"><i class="fas fa-ban"></i> Tabu Search</span></td>
                                 <td id="compare-tabu-accuracy">-</td>
+                                <td id="compare-tabu-fitness">-</td>
+                                <td id="compare-tabu-error">-</td>
                                 <td id="compare-tabu-time">-</td>
                                 <td id="compare-tabu-convergence">-</td>
                             </tr>
@@ -131,12 +141,20 @@
                                     <div class="parameter-value" id="ga-summary-mutation-rate">0.1</div>
                                 </div>
                                 <div class="parameter-item">
+                                    <div class="parameter-label">Genotype</div>
+                                    <div class="parameter-value" id="ga-summary-genotype">Binary</div>
+                                </div>
+                                <div class="parameter-item">
                                     <div class="parameter-label">Selection Method</div>
                                     <div class="parameter-value" id="ga-summary-selection-method">Tournament</div>
                                 </div>
                                 <div class="parameter-item">
                                     <div class="parameter-label">Crossover Method</div>
                                     <div class="parameter-value" id="ga-summary-crossover-method">Single Point</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Mutation Type</div>
+                                    <div class="parameter-value" id="ga-summary-mutation-type">Bit Flip</div>
                                 </div>
                                 <div class="parameter-item">
                                     <div class="parameter-label">Elitism</div>
