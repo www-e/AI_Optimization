@@ -1,0 +1,102 @@
+/* Charts */
+.chart-container {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+    background-color: var(--dark-card);
+    border-radius: var(--card-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+/* Simple Chart Styles */
+.simple-chart {
+    width: 100%;
+    height: 100%;
+    padding: 20px 10px 10px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.chart-bar {
+    flex: 1;
+    min-width: 4px;
+    background-color: var(--primary);
+    border-radius: 2px 2px 0 0;
+    transition: height 0.5s ease;
+}
+
+/* Algorithm-specific chart colors */
+.ga-container .chart-bar {
+    background-color: var(--ga-color);
+}
+
+.pso-container .chart-bar {
+    background-color: var(--pso-color);
+}
+
+.aco-container .chart-bar {
+    background-color: var(--aco-color);
+}
+
+.tabu-container .chart-bar {
+    background-color: var(--tabu-color);
+}
+
+/* Chart.js container */
+.chartjs-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* Chart Legend */
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+/* Chart Tooltip */
+.chart-tooltip {
+    position: absolute;
+    background-color: var(--dark-surface);
+    border-radius: var(--border-radius);
+    padding: 8px 12px;
+    box-shadow: var(--shadow);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 10;
+}
+
+.chart-tooltip.visible {
+    opacity: 1;
+}
+
+.tooltip-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.tooltip-value {
+    color: var(--text-secondary);
+}

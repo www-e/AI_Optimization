@@ -1,0 +1,344 @@
+<div class="algorithm-container compare-container">
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-balance-scale"></i> Algorithm Comparison</h3>
+        </div>
+        <div class="card-body">
+            <p>Run all optimization algorithms with their current parameters to compare their performance.</p>
+            
+            <button type="button" id="compare-run-btn" class="btn btn-primary btn-lg">
+                <i class="fas fa-play-circle"></i> Run All Algorithms
+            </button>
+            
+            <div class="comparison-results" id="comparison-results" style="display: none;">
+                <h3 class="mt-4">Performance Comparison</h3>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Final Accuracy</th>
+                                <th>Execution Time</th>
+                                <th>Convergence Speed</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comparison-table-body">
+                            <tr>
+                                <td><span class="ga-text"><i class="fas fa-dna"></i> Genetic Algorithm</span></td>
+                                <td id="compare-ga-accuracy">-</td>
+                                <td id="compare-ga-time">-</td>
+                                <td id="compare-ga-convergence">-</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pso-text"><i class="fas fa-bird"></i> Particle Swarm</span></td>
+                                <td id="compare-pso-accuracy">-</td>
+                                <td id="compare-pso-time">-</td>
+                                <td id="compare-pso-convergence">-</td>
+                            </tr>
+                            <tr>
+                                <td><span class="aco-text"><i class="fas fa-bug"></i> Ant Colony</span></td>
+                                <td id="compare-aco-accuracy">-</td>
+                                <td id="compare-aco-time">-</td>
+                                <td id="compare-aco-convergence">-</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tabu-text"><i class="fas fa-ban"></i> Tabu Search</span></td>
+                                <td id="compare-tabu-accuracy">-</td>
+                                <td id="compare-tabu-time">-</td>
+                                <td id="compare-tabu-convergence">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="grid grid-2 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Accuracy Comparison</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container" id="accuracy-chart-container">
+                                <!-- Chart.js will render here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Time Comparison</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container" id="time-chart-container">
+                                <!-- Chart.js will render here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>Convergence Comparison</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="convergence-chart-container">
+                            <!-- Chart.js will render here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>Analysis</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="algorithm-analysis">
+                            <p>Run all algorithms to see a detailed performance analysis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Algorithm Parameters Summary -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-cogs"></i> Current Parameters</h3>
+        </div>
+        <div class="card-body">
+            <div class="accordion" id="parameters-accordion">
+                <!-- GA Parameters -->
+                <div class="accordion-item">
+                    <div class="accordion-header" id="ga-parameters-heading">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ga-parameters-collapse" aria-expanded="true" aria-controls="ga-parameters-collapse">
+                            <span class="ga-text"><i class="fas fa-dna"></i> Genetic Algorithm Parameters</span>
+                        </button>
+                    </div>
+                    <div id="ga-parameters-collapse" class="accordion-collapse collapse show" aria-labelledby="ga-parameters-heading">
+                        <div class="accordion-body">
+                            <div class="grid grid-3" id="ga-parameters-summary">
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Population Size</div>
+                                    <div class="parameter-value" id="ga-summary-population-size">50</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Generations</div>
+                                    <div class="parameter-value" id="ga-summary-generations">100</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Mutation Rate</div>
+                                    <div class="parameter-value" id="ga-summary-mutation-rate">0.1</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Selection Method</div>
+                                    <div class="parameter-value" id="ga-summary-selection-method">Tournament</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Crossover Method</div>
+                                    <div class="parameter-value" id="ga-summary-crossover-method">Single Point</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Elitism</div>
+                                    <div class="parameter-value" id="ga-summary-elitism">2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PSO Parameters -->
+                <div class="accordion-item">
+                    <div class="accordion-header" id="pso-parameters-heading">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pso-parameters-collapse" aria-expanded="false" aria-controls="pso-parameters-collapse">
+                            <span class="pso-text"><i class="fas fa-bird"></i> Particle Swarm Optimization Parameters</span>
+                        </button>
+                    </div>
+                    <div id="pso-parameters-collapse" class="accordion-collapse collapse" aria-labelledby="pso-parameters-heading">
+                        <div class="accordion-body">
+                            <div class="grid grid-3" id="pso-parameters-summary">
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Swarm Size</div>
+                                    <div class="parameter-value" id="pso-summary-swarm-size">30</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Iterations</div>
+                                    <div class="parameter-value" id="pso-summary-iterations">100</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Inertia Weight</div>
+                                    <div class="parameter-value" id="pso-summary-inertia">0.7</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Cognitive Coefficient</div>
+                                    <div class="parameter-value" id="pso-summary-cognitive">1.5</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Social Coefficient</div>
+                                    <div class="parameter-value" id="pso-summary-social">1.5</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Topology</div>
+                                    <div class="parameter-value" id="pso-summary-topology">Global Best</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ACO Parameters -->
+                <div class="accordion-item">
+                    <div class="accordion-header" id="aco-parameters-heading">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aco-parameters-collapse" aria-expanded="false" aria-controls="aco-parameters-collapse">
+                            <span class="aco-text"><i class="fas fa-bug"></i> Ant Colony Optimization Parameters</span>
+                        </button>
+                    </div>
+                    <div id="aco-parameters-collapse" class="accordion-collapse collapse" aria-labelledby="aco-parameters-heading">
+                        <div class="accordion-body">
+                            <div class="grid grid-3" id="aco-parameters-summary">
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Ant Count</div>
+                                    <div class="parameter-value" id="aco-summary-ant-count">20</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Iterations</div>
+                                    <div class="parameter-value" id="aco-summary-iterations">100</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Pheromone Importance (α)</div>
+                                    <div class="parameter-value" id="aco-summary-pheromone-importance">1.0</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Heuristic Importance (β)</div>
+                                    <div class="parameter-value" id="aco-summary-heuristic-importance">2.0</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Evaporation Rate (ρ)</div>
+                                    <div class="parameter-value" id="aco-summary-evaporation-rate">0.5</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Initial Pheromone</div>
+                                    <div class="parameter-value" id="aco-summary-initial-pheromone">0.1</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tabu Search Parameters -->
+                <div class="accordion-item">
+                    <div class="accordion-header" id="tabu-parameters-heading">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tabu-parameters-collapse" aria-expanded="false" aria-controls="tabu-parameters-collapse">
+                            <span class="tabu-text"><i class="fas fa-ban"></i> Tabu Search Parameters</span>
+                        </button>
+                    </div>
+                    <div id="tabu-parameters-collapse" class="accordion-collapse collapse" aria-labelledby="tabu-parameters-heading">
+                        <div class="accordion-body">
+                            <div class="grid grid-3" id="tabu-parameters-summary">
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Iterations</div>
+                                    <div class="parameter-value" id="tabu-summary-iterations">100</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Tabu List Size</div>
+                                    <div class="parameter-value" id="tabu-summary-list-size">10</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Neighborhood Size</div>
+                                    <div class="parameter-value" id="tabu-summary-neighborhood-size">20</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Step Size</div>
+                                    <div class="parameter-value" id="tabu-summary-step-size">0.1</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Aspiration Criterion</div>
+                                    <div class="parameter-value" id="tabu-summary-aspiration">Best Solution</div>
+                                </div>
+                                <div class="parameter-item">
+                                    <div class="parameter-label">Diversification</div>
+                                    <div class="parameter-value" id="tabu-summary-diversification">Enabled</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .algorithm-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .mt-4 {
+        margin-top: 20px;
+    }
+    
+    /* Accordion Styles */
+    .accordion-item {
+        background-color: var(--dark-card);
+        border-radius: var(--border-radius);
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+    
+    .accordion-button {
+        background-color: var(--dark-surface);
+        color: var(--text-primary);
+        padding: 15px 20px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    
+    .accordion-button:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .accordion-button::after {
+        content: '\f078';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        margin-left: auto;
+        transition: transform 0.3s ease;
+    }
+    
+    .accordion-button.collapsed::after {
+        transform: rotate(-90deg);
+    }
+    
+    .accordion-body {
+        padding: 20px;
+        background-color: var(--dark-card);
+    }
+    
+    /* Parameter Items */
+    .parameter-item {
+        background-color: var(--dark-surface);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin-bottom: 10px;
+    }
+    
+    .parameter-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+    }
+    
+    .parameter-value {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--text-primary);
+    }
+</style>

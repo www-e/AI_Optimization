@@ -1,0 +1,176 @@
+<div class="algorithm-container ga-container">
+    <div class="grid grid-2">
+        <!-- Parameters Section -->
+        <div class="card ga-border">
+            <div class="card-header">
+                <h3><i class="fas fa-sliders-h"></i> GA Parameters</h3>
+            </div>
+            <div class="card-body">
+                <form id="ga-form">
+                    <div class="form-group">
+                        <label for="ga-population-size">Population Size</label>
+                        <input type="number" id="ga-population-size" class="form-control" value="50" min="10" max="200">
+                        <small>Number of individuals in the population (10-200)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ga-generations">Generations</label>
+                        <input type="number" id="ga-generations" class="form-control" value="100" min="10" max="500">
+                        <small>Number of generations to evolve (10-500)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ga-mutation-rate">Mutation Rate</label>
+                        <input type="range" id="ga-mutation-rate" class="form-control" value="0.1" min="0.01" max="0.5" step="0.01">
+                        <div class="range-value">0.1</div>
+                        <small>Probability of mutation (0.01-0.5)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ga-selection-method">Selection Method</label>
+                        <select id="ga-selection-method" class="form-control">
+                            <option value="tournament">Tournament</option>
+                            <option value="roulette">Roulette Wheel</option>
+                        </select>
+                        <small>Method for selecting parents</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ga-crossover-method">Crossover Method</label>
+                        <select id="ga-crossover-method" class="form-control">
+                            <option value="single_point">Single Point</option>
+                            <option value="uniform">Uniform</option>
+                        </select>
+                        <small>Method for combining parent genes</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ga-elitism">Elitism</label>
+                        <input type="number" id="ga-elitism" class="form-control" value="2" min="0" max="10">
+                        <small>Number of best individuals to keep (0-10)</small>
+                    </div>
+                    
+                    <button type="button" id="ga-run-btn" class="btn btn-primary btn-block">
+                        <i class="fas fa-play"></i> Run Genetic Algorithm
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Results Section -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-line"></i> Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div class="result-card">
+                        <div class="result-label">Final Accuracy</div>
+                        <div id="ga-accuracy" class="result-value">-</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">Execution Time</div>
+                        <div id="ga-time" class="result-value">-</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container" id="ga-chart-container">
+                    <!-- Chart.js will render here -->
+                </div>
+                
+                <!-- Iteration Data Table -->
+                <div class="table-container mt-4">
+                    <h4>Iteration Data</h4>
+                    <div id="ga-iterations-table">
+                        <!-- Iteration table will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Algorithm Description -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-info-circle"></i> About Genetic Algorithm</h3>
+        </div>
+        <div class="card-body">
+            <p>Genetic Algorithm (GA) is a search heuristic inspired by Charles Darwin's theory of natural evolution. This algorithm reflects the process of natural selection where the fittest individuals are selected for reproduction to produce offspring for the next generation.</p>
+            
+            <h4>How It Works</h4>
+            <ol>
+                <li><strong>Initialization:</strong> The algorithm begins with a population of randomly generated individuals (potential solutions).</li>
+                <li><strong>Fitness Evaluation:</strong> Each individual is evaluated based on how well it solves the problem (in this case, neural network accuracy).</li>
+                <li><strong>Selection:</strong> Individuals are selected for reproduction based on their fitness. Better-performing individuals have a higher chance of being selected.</li>
+                <li><strong>Crossover:</strong> Selected individuals (parents) exchange genetic information to create new individuals (offspring).</li>
+                <li><strong>Mutation:</strong> Random changes are introduced to maintain genetic diversity and prevent premature convergence.</li>
+                <li><strong>Replacement:</strong> The offspring replace the old population, forming a new generation.</li>
+                <li><strong>Termination:</strong> The process repeats until a termination condition is met (e.g., maximum number of generations).</li>
+            </ol>
+            
+            <h4>Parameter Explanation</h4>
+            <ul>
+                <li><strong>Population Size:</strong> The number of individuals (potential solutions) in each generation. Larger populations provide more diversity but require more computational resources.</li>
+                <li><strong>Generations:</strong> The number of iterations the algorithm runs. More generations allow for more evolution but increase computation time.</li>
+                <li><strong>Mutation Rate:</strong> The probability of random changes in offspring. Higher rates increase exploration but may disrupt good solutions.</li>
+                <li><strong>Selection Method:</strong> How parents are chosen for reproduction. Tournament selection picks the best from random subsets, while roulette wheel selection gives better individuals higher chances proportional to their fitness.</li>
+                <li><strong>Crossover Method:</strong> How genetic information is exchanged between parents. Single-point crossover swaps genes at a random point, while uniform crossover decides for each gene independently.</li>
+                <li><strong>Elitism:</strong> The number of best individuals that automatically survive to the next generation, ensuring the best solutions are not lost.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .algorithm-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .range-value {
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 500;
+        color: var(--ga-color);
+    }
+    
+    .mt-4 {
+        margin-top: 20px;
+    }
+    
+    /* Custom styling for range input */
+    input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        border-radius: 5px;
+        background: var(--dark);
+        outline: none;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--ga-color);
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--ga-color);
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    input[type="range"]::-webkit-slider-thumb:hover {
+        box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3);
+    }
+</style>

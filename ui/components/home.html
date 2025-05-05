@@ -1,0 +1,145 @@
+<div class="home-container">
+    <section class="intro-section">
+        <div class="card">
+            <div class="card-header">
+                <h2>Welcome to Hybrid AI Optimization</h2>
+            </div>
+            <div class="card-body">
+                <p>This application demonstrates the use of nature-inspired optimization algorithms to train neural networks without traditional gradient descent. The project includes four different algorithms:</p>
+                
+                <div class="grid grid-2">
+                    <div class="card ga-border">
+                        <h3 class="ga-text"><i class="fas fa-dna"></i> Genetic Algorithm</h3>
+                        <p>Inspired by natural evolution, using selection, crossover, and mutation to evolve a population of solutions.</p>
+                        <button class="btn btn-primary" onclick="window.location.href='#ga'">
+                            <i class="fas fa-arrow-right"></i> Explore
+                        </button>
+                    </div>
+                    
+                    <div class="card pso-border">
+                        <h3 class="pso-text"><i class="fas fa-bird"></i> Particle Swarm Optimization</h3>
+                        <p>Inspired by social behavior of birds flocking or fish schooling, using particles that move through the search space.</p>
+                        <button class="btn btn-primary" onclick="window.location.href='#pso'">
+                            <i class="fas fa-arrow-right"></i> Explore
+                        </button>
+                    </div>
+                    
+                    <div class="card aco-border">
+                        <h3 class="aco-text"><i class="fas fa-bug"></i> Ant Colony Optimization</h3>
+                        <p>Inspired by ants finding paths through pheromone trails, using artificial ants to construct solutions.</p>
+                        <button class="btn btn-primary" onclick="window.location.href='#aco'">
+                            <i class="fas fa-arrow-right"></i> Explore
+                        </button>
+                    </div>
+                    
+                    <div class="card tabu-border">
+                        <h3 class="tabu-text"><i class="fas fa-ban"></i> Tabu Search</h3>
+                        <p>A metaheuristic that uses memory structures to avoid revisiting recently explored solutions.</p>
+                        <button class="btn btn-primary" onclick="window.location.href='#tabu'">
+                            <i class="fas fa-arrow-right"></i> Explore
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="dataset-section">
+        <div class="card">
+            <div class="card-header">
+                <h2>Dataset: Iris Classification</h2>
+            </div>
+            <div class="card-body">
+                <p>This project uses the famous Iris dataset for classification. The neural network is trained to classify iris flowers into three species based on four features:</p>
+                
+                <div class="grid grid-2">
+                    <div>
+                        <ul>
+                            <li><strong>Sepal Length</strong> (cm)</li>
+                            <li><strong>Sepal Width</strong> (cm)</li>
+                            <li><strong>Petal Length</strong> (cm)</li>
+                            <li><strong>Petal Width</strong> (cm)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p>The three species to classify are:</p>
+                        <ul>
+                            <li><strong>Setosa</strong></li>
+                            <li><strong>Versicolor</strong></li>
+                            <li><strong>Virginica</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="neural-network-section">
+        <div class="card">
+            <div class="card-header">
+                <h2>Neural Network Architecture</h2>
+            </div>
+            <div class="card-body">
+                <p>The neural network used in this project is a simple feedforward network with one hidden layer:</p>
+                
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3><i class="fas fa-sign-in-alt"></i> Input Layer</h3>
+                        <p>4 neurons (one for each feature)</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-network-wired"></i> Hidden Layer</h3>
+                        <p>8 neurons with sigmoid activation</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-sign-out-alt"></i> Output Layer</h3>
+                        <p>3 neurons (one for each class) with softmax activation</p>
+                    </div>
+                </div>
+                
+                <p class="mt-4">The optimization algorithms are used to find the optimal weights for this neural network, replacing traditional gradient descent methods like backpropagation.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="getting-started-section">
+        <div class="card">
+            <div class="card-header">
+                <h2>Getting Started</h2>
+            </div>
+            <div class="card-body">
+                <p>To get started with the application:</p>
+                
+                <ol>
+                    <li>Select an algorithm from the sidebar to explore its parameters and run it individually.</li>
+                    <li>Use the "Compare All" option to run and compare all algorithms side by side.</li>
+                    <li>Adjust parameters for each algorithm to see how they affect performance.</li>
+                    <li>View the results including accuracy, execution time, and convergence charts.</li>
+                </ol>
+                
+                <div class="mt-4">
+                    <button class="btn btn-primary btn-lg" onclick="document.getElementById('run-all-btn').click()">
+                        <i class="fas fa-play-circle"></i> Run All Algorithms
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .home-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    section {
+        margin-bottom: 30px;
+    }
+    
+    .mt-4 {
+        margin-top: 20px;
+    }
+</style>

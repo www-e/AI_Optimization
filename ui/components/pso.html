@@ -1,0 +1,153 @@
+<div class="algorithm-container pso-container">
+    <div class="grid grid-2">
+        <!-- Parameters Section -->
+        <div class="card pso-border">
+            <div class="card-header">
+                <h3><i class="fas fa-sliders-h"></i> PSO Parameters</h3>
+            </div>
+            <div class="card-body">
+                <form id="pso-form">
+                    <div class="form-group">
+                        <label for="pso-swarm-size">Swarm Size</label>
+                        <input type="number" id="pso-swarm-size" class="form-control" value="30" min="10" max="100">
+                        <small>Number of particles in the swarm (10-100)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pso-iterations">Iterations</label>
+                        <input type="number" id="pso-iterations" class="form-control" value="100" min="10" max="500">
+                        <small>Number of iterations to run (10-500)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pso-inertia">Inertia Weight</label>
+                        <input type="range" id="pso-inertia" class="form-control" value="0.7" min="0.1" max="1.0" step="0.05">
+                        <div class="range-value">0.7</div>
+                        <small>Controls the influence of previous velocity (0.1-1.0)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pso-cognitive">Cognitive Coefficient</label>
+                        <input type="range" id="pso-cognitive" class="form-control" value="1.5" min="0.5" max="2.5" step="0.1">
+                        <div class="range-value">1.5</div>
+                        <small>Controls attraction to particle's best position (0.5-2.5)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pso-social">Social Coefficient</label>
+                        <input type="range" id="pso-social" class="form-control" value="1.5" min="0.5" max="2.5" step="0.1">
+                        <div class="range-value">1.5</div>
+                        <small>Controls attraction to swarm's best position (0.5-2.5)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pso-topology">Swarm Topology</label>
+                        <select id="pso-topology" class="form-control">
+                            <option value="global">Global Best</option>
+                            <option value="ring">Ring</option>
+                            <option value="vonneumann">Von Neumann</option>
+                        </select>
+                        <small>Neighborhood structure for information sharing</small>
+                    </div>
+                    
+                    <button type="button" id="pso-run-btn" class="btn btn-primary btn-block">
+                        <i class="fas fa-play"></i> Run Particle Swarm Optimization
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Results Section -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-line"></i> Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div class="result-card">
+                        <div class="result-label">Final Accuracy</div>
+                        <div id="pso-accuracy" class="result-value">-</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">Execution Time</div>
+                        <div id="pso-time" class="result-value">-</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container" id="pso-chart-container">
+                    <!-- Chart.js will render here -->
+                </div>
+                
+                <!-- Iteration Data Table -->
+                <div class="table-container mt-4">
+                    <h4>Iteration Data</h4>
+                    <div id="pso-iterations-table">
+                        <!-- Iteration table will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Algorithm Description -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-info-circle"></i> About Particle Swarm Optimization</h3>
+        </div>
+        <div class="card-body">
+            <p>Particle Swarm Optimization (PSO) is a population-based stochastic optimization technique inspired by social behavior of bird flocking or fish schooling. PSO optimizes a problem by having a population of candidate solutions (particles) that move around in the search space according to simple mathematical formulas.</p>
+            
+            <h4>How It Works</h4>
+            <ol>
+                <li><strong>Initialization:</strong> A swarm of particles is initialized with random positions and velocities in the search space.</li>
+                <li><strong>Evaluation:</strong> Each particle's position is evaluated according to the objective function (neural network accuracy).</li>
+                <li><strong>Update Personal Best:</strong> If a particle's current position is better than its previous best position, the personal best is updated.</li>
+                <li><strong>Update Global Best:</strong> If a particle's current position is better than the global best position, the global best is updated.</li>
+                <li><strong>Update Velocity and Position:</strong> Each particle's velocity and position are updated based on its previous velocity, personal best position, and the global best position.</li>
+                <li><strong>Termination:</strong> The process repeats until a termination condition is met (e.g., maximum number of iterations).</li>
+            </ol>
+            
+            <h4>Parameter Explanation</h4>
+            <ul>
+                <li><strong>Swarm Size:</strong> The number of particles in the swarm. Larger swarms provide better exploration but require more computational resources.</li>
+                <li><strong>Iterations:</strong> The number of times the algorithm updates the particles. More iterations allow for more refinement but increase computation time.</li>
+                <li><strong>Inertia Weight:</strong> Controls how much of the previous velocity is preserved. Higher values promote exploration, while lower values promote exploitation.</li>
+                <li><strong>Cognitive Coefficient:</strong> Controls the attraction towards the particle's own best position. Higher values make particles more "nostalgic" about their own discoveries.</li>
+                <li><strong>Social Coefficient:</strong> Controls the attraction towards the swarm's best position. Higher values make particles more influenced by the group's best discovery.</li>
+                <li><strong>Swarm Topology:</strong> Defines how particles communicate with each other. Global best allows all particles to communicate, while ring and Von Neumann topologies restrict communication to neighbors.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .algorithm-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .range-value {
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 500;
+        color: var(--pso-color);
+    }
+    
+    .mt-4 {
+        margin-top: 20px;
+    }
+    
+    /* Custom styling for range input */
+    .pso-container input[type="range"]::-webkit-slider-thumb {
+        background: var(--pso-color);
+    }
+    
+    .pso-container input[type="range"]::-moz-range-thumb {
+        background: var(--pso-color);
+    }
+    
+    .pso-container input[type="range"]::-webkit-slider-thumb:hover {
+        box-shadow: 0 0 0 3px rgba(255, 0, 110, 0.3);
+    }
+</style>

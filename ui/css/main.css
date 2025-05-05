@@ -1,0 +1,22 @@
+/* Main CSS file that imports all modular CSS files */
+
+/* Import theme variables */
+@import url('themes/variables.css');
+
+/* Import base styles */
+@import url('base.css');
+
+/* Import layout styles */
+@import url('layout/layout.css');
+@import url('layout/sidebar.css');
+
+/* Import component styles */
+@import url('components/cards.css');
+@import url('components/forms.css');
+@import url('components/buttons.css');
+@import url('components/tables.css');
+@import url('components/charts.css');
+@import url('components/utilities.css');
+
+/* Import Chart.js library */
+@import url('https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css');

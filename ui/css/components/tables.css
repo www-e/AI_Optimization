@@ -1,0 +1,167 @@
+/* Tables */
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--dark-surface);
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+td {
+    background-color: var(--dark-card);
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: rgba(58, 134, 255, 0.05);
+}
+
+/* Iteration Table Styles */
+.iteration-table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--dark-surface);
+}
+
+.iteration-table-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.iteration-table-container::-webkit-scrollbar-track {
+    background: var(--dark-surface);
+    border-radius: 4px;
+}
+
+.iteration-table-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-light);
+    border-radius: 4px;
+}
+
+.iteration-table {
+    font-size: 0.9rem;
+    width: 100%;
+    table-layout: auto;
+}
+
+.iteration-table th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    padding: 10px 15px;
+    background-color: var(--dark-surface);
+    border-bottom: 2px solid var(--primary-light);
+}
+
+.iteration-table td {
+    padding: 8px 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--dark-border);
+    white-space: nowrap;
+}
+
+.iteration-table tr:nth-child(even) td {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.iteration-table tr:hover td {
+    background-color: rgba(58, 134, 255, 0.05);
+}
+
+.positive-change {
+    color: var(--success);
+    font-weight: 500;
+}
+
+.negative-change {
+    color: var(--danger);
+    font-weight: 500;
+}
+
+/* Iteration Summary Styles */
+.iteration-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: var(--dark-card);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.summary-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.summary-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Best algorithm highlight */
+.best-algorithm td {
+    background-color: rgba(58, 134, 255, 0.1);
+    border-left: 3px solid var(--primary);
+}
+
+/* Make the table responsive */
+@media (max-width: 768px) {
+    .iteration-table {
+        font-size: 0.8rem;
+    }
+    
+    .iteration-table th,
+    .iteration-table td {
+        padding: 6px 8px;
+    }
+    
+    .iteration-summary {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .summary-item {
+        min-width: unset;
+    }
+}

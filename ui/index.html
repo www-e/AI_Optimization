@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid AI Optimization</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h1>Hybrid<span>AI</span></h1>
+                </div>
+                <button id="menu-toggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" id="nav-home" class="active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" id="nav-ga" data-page="ga"><i class="fas fa-dna"></i> Genetic Algorithm</a></li>
+                <li><a href="#" id="nav-pso" data-page="pso"><i class="fas fa-bird"></i> Particle Swarm</a></li>
+                <li><a href="#" id="nav-aco" data-page="aco"><i class="fas fa-bug"></i> Ant Colony</a></li>
+                <li><a href="#" id="nav-tabu" data-page="tabu"><i class="fas fa-ban"></i> Tabu Search</a></li>
+                <li><a href="#" id="nav-compare" data-page="compare"><i class="fas fa-chart-bar"></i> Compare All</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="run-all-btn" class="run-all-btn">
+                    <i class="fas fa-play-circle"></i> Run All Algorithms
+                </button>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header>
+                <div class="header-content">
+                    <h1 id="page-title">Hybrid AI Optimization</h1>
+                    <p id="page-description">Train neural networks using nature-inspired optimization algorithms</p>
+                </div>
+            </header>
+
+            <!-- Content container where pages will be loaded -->
+            <div id="content-container" class="content-container">
+                <!-- Pages will be loaded here dynamically -->
+            </div>
+
+            <!-- Loading spinner -->
+            <div id="loading" class="loading-container" style="display: none;">
+                <div class="spinner"></div>
+                <p>Running optimization...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+</body>
+</html>

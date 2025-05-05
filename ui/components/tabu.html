@@ -1,0 +1,155 @@
+<div class="algorithm-container tabu-container">
+    <div class="grid grid-2">
+        <!-- Parameters Section -->
+        <div class="card tabu-border">
+            <div class="card-header">
+                <h3><i class="fas fa-sliders-h"></i> Tabu Search Parameters</h3>
+            </div>
+            <div class="card-body">
+                <form id="tabu-form">
+                    <div class="form-group">
+                        <label for="tabu-iterations">Iterations</label>
+                        <input type="number" id="tabu-iterations" class="form-control" value="100" min="10" max="500">
+                        <small>Number of iterations to run (10-500)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tabu-list-size">Tabu List Size</label>
+                        <input type="number" id="tabu-list-size" class="form-control" value="10" min="1" max="50">
+                        <small>Number of recent solutions to keep in tabu list (1-50)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tabu-neighborhood-size">Neighborhood Size</label>
+                        <input type="number" id="tabu-neighborhood-size" class="form-control" value="20" min="5" max="100">
+                        <small>Number of neighboring solutions to evaluate (5-100)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tabu-step-size">Step Size</label>
+                        <input type="range" id="tabu-step-size" class="form-control" value="0.1" min="0.01" max="0.5" step="0.01">
+                        <div class="range-value">0.1</div>
+                        <small>Size of perturbation for generating neighbors (0.01-0.5)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tabu-aspiration">Aspiration Criterion</label>
+                        <select id="tabu-aspiration" class="form-control">
+                            <option value="best">Best Solution</option>
+                            <option value="none">None</option>
+                        </select>
+                        <small>Condition to override tabu status</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tabu-diversification">Diversification</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="tabu-diversification" checked>
+                            <label for="tabu-diversification">Enable diversification strategy</label>
+                        </div>
+                        <small>Periodically move to unexplored regions of the search space</small>
+                    </div>
+                    
+                    <button type="button" id="tabu-run-btn" class="btn btn-primary btn-block">
+                        <i class="fas fa-play"></i> Run Tabu Search
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Results Section -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-line"></i> Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div class="result-card">
+                        <div class="result-label">Final Accuracy</div>
+                        <div id="tabu-accuracy" class="result-value">-</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">Execution Time</div>
+                        <div id="tabu-time" class="result-value">-</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container" id="tabu-chart-container">
+                    <!-- Chart.js will render here -->
+                </div>
+                
+                <!-- Iteration Data Table -->
+                <div class="table-container mt-4">
+                    <h4>Iteration Data</h4>
+                    <div id="tabu-iterations-table">
+                        <!-- Iteration table will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Algorithm Description -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-info-circle"></i> About Tabu Search</h3>
+        </div>
+        <div class="card-body">
+            <p>Tabu Search is a metaheuristic search method that uses memory structures to enhance the performance of a local search method. It maintains a tabu list to avoid revisiting recently explored solutions, helping the algorithm escape from local optima.</p>
+            
+            <h4>How It Works</h4>
+            <ol>
+                <li><strong>Initialization:</strong> Start with a random solution as the current solution and the best solution.</li>
+                <li><strong>Neighborhood Generation:</strong> Generate a set of neighboring solutions by making small modifications to the current solution.</li>
+                <li><strong>Evaluation:</strong> Evaluate each neighbor according to the objective function (neural network accuracy).</li>
+                <li><strong>Selection:</strong> Select the best non-tabu neighbor as the new current solution. If it's better than the best solution found so far, update the best solution.</li>
+                <li><strong>Tabu List Update:</strong> Add the current solution (or its attributes) to the tabu list. If the tabu list is full, remove the oldest entry.</li>
+                <li><strong>Aspiration Criterion:</strong> If a tabu move leads to a solution better than the best found so far, allow it despite its tabu status.</li>
+                <li><strong>Diversification:</strong> Periodically make a larger move to explore different regions of the search space.</li>
+                <li><strong>Termination:</strong> The process repeats until a termination condition is met (e.g., maximum number of iterations).</li>
+            </ol>
+            
+            <h4>Parameter Explanation</h4>
+            <ul>
+                <li><strong>Iterations:</strong> The number of times the algorithm searches for a better solution. More iterations allow for more refinement but increase computation time.</li>
+                <li><strong>Tabu List Size:</strong> The number of recent solutions (or moves) to keep in the tabu list. Larger sizes prevent cycling but may restrict the search too much.</li>
+                <li><strong>Neighborhood Size:</strong> The number of neighboring solutions to generate and evaluate at each iteration. Larger sizes provide better exploration but require more computational resources.</li>
+                <li><strong>Step Size:</strong> The magnitude of changes made to generate neighboring solutions. Larger step sizes allow for bigger jumps in the search space.</li>
+                <li><strong>Aspiration Criterion:</strong> A condition that allows a tabu move if it leads to a solution better than the best found so far, helping the algorithm not to miss promising solutions.</li>
+                <li><strong>Diversification:</strong> A strategy to periodically move to unexplored regions of the search space, preventing the algorithm from getting stuck in a particular region.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .algorithm-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .range-value {
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 500;
+        color: var(--tabu-color);
+    }
+    
+    .mt-4 {
+        margin-top: 20px;
+    }
+    
+    /* Custom styling for range input */
+    .tabu-container input[type="range"]::-webkit-slider-thumb {
+        background: var(--tabu-color);
+    }
+    
+    .tabu-container input[type="range"]::-moz-range-thumb {
+        background: var(--tabu-color);
+    }
+    
+    .tabu-container input[type="range"]::-webkit-slider-thumb:hover {
+        box-shadow: 0 0 0 3px rgba(131, 56, 236, 0.3);
+    }
+</style>

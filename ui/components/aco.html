@@ -1,0 +1,149 @@
+<div class="algorithm-container aco-container">
+    <div class="grid grid-2">
+        <!-- Parameters Section -->
+        <div class="card aco-border">
+            <div class="card-header">
+                <h3><i class="fas fa-sliders-h"></i> ACO Parameters</h3>
+            </div>
+            <div class="card-body">
+                <form id="aco-form">
+                    <div class="form-group">
+                        <label for="aco-ant-count">Ant Count</label>
+                        <input type="number" id="aco-ant-count" class="form-control" value="20" min="5" max="100">
+                        <small>Number of ants in the colony (5-100)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="aco-iterations">Iterations</label>
+                        <input type="number" id="aco-iterations" class="form-control" value="100" min="10" max="500">
+                        <small>Number of iterations to run (10-500)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="aco-pheromone-importance">Pheromone Importance (α)</label>
+                        <input type="range" id="aco-pheromone-importance" class="form-control" value="1.0" min="0.1" max="5.0" step="0.1">
+                        <div class="range-value">1.0</div>
+                        <small>Importance of pheromone trails (0.1-5.0)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="aco-heuristic-importance">Heuristic Importance (β)</label>
+                        <input type="range" id="aco-heuristic-importance" class="form-control" value="2.0" min="0.1" max="5.0" step="0.1">
+                        <div class="range-value">2.0</div>
+                        <small>Importance of heuristic information (0.1-5.0)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="aco-evaporation-rate">Evaporation Rate (ρ)</label>
+                        <input type="range" id="aco-evaporation-rate" class="form-control" value="0.5" min="0.1" max="0.9" step="0.05">
+                        <div class="range-value">0.5</div>
+                        <small>Rate at which pheromones evaporate (0.1-0.9)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="aco-initial-pheromone">Initial Pheromone</label>
+                        <input type="number" id="aco-initial-pheromone" class="form-control" value="0.1" min="0.01" max="1.0" step="0.01">
+                        <small>Initial pheromone level on all paths (0.01-1.0)</small>
+                    </div>
+                    
+                    <button type="button" id="aco-run-btn" class="btn btn-primary btn-block">
+                        <i class="fas fa-play"></i> Run Ant Colony Optimization
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Results Section -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-line"></i> Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="grid grid-2">
+                    <div class="result-card">
+                        <div class="result-label">Final Accuracy</div>
+                        <div id="aco-accuracy" class="result-value">-</div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-label">Execution Time</div>
+                        <div id="aco-time" class="result-value">-</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container" id="aco-chart-container">
+                    <!-- Chart.js will render here -->
+                </div>
+                
+                <!-- Iteration Data Table -->
+                <div class="table-container mt-4">
+                    <h4>Iteration Data</h4>
+                    <div id="aco-iterations-table">
+                        <!-- Iteration table will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Algorithm Description -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3><i class="fas fa-info-circle"></i> About Ant Colony Optimization</h3>
+        </div>
+        <div class="card-body">
+            <p>Ant Colony Optimization (ACO) is a probabilistic technique for solving computational problems which can be reduced to finding good paths through graphs. It is inspired by the behavior of ants seeking a path between their colony and a source of food.</p>
+            
+            <h4>How It Works</h4>
+            <ol>
+                <li><strong>Initialization:</strong> Pheromone trails are initialized with a small value on all possible paths.</li>
+                <li><strong>Solution Construction:</strong> Each ant constructs a solution by moving from one state to another, with the probability of choosing a particular path influenced by pheromone levels and heuristic information.</li>
+                <li><strong>Evaluation:</strong> Each ant's solution is evaluated according to the objective function (neural network accuracy).</li>
+                <li><strong>Pheromone Update:</strong> Pheromone levels are updated based on the quality of solutions. Better solutions receive more pheromone.</li>
+                <li><strong>Pheromone Evaporation:</strong> All pheromone trails are reduced by a factor to simulate evaporation, preventing the algorithm from converging too quickly to suboptimal solutions.</li>
+                <li><strong>Termination:</strong> The process repeats until a termination condition is met (e.g., maximum number of iterations).</li>
+            </ol>
+            
+            <h4>Parameter Explanation</h4>
+            <ul>
+                <li><strong>Ant Count:</strong> The number of ants in the colony. More ants provide better exploration but require more computational resources.</li>
+                <li><strong>Iterations:</strong> The number of times the algorithm runs the colony. More iterations allow for more refinement but increase computation time.</li>
+                <li><strong>Pheromone Importance (α):</strong> Controls the influence of pheromone trails on ant decisions. Higher values make ants more likely to follow existing trails.</li>
+                <li><strong>Heuristic Importance (β):</strong> Controls the influence of heuristic information on ant decisions. Higher values make ants more greedy, preferring paths that look good in the short term.</li>
+                <li><strong>Evaporation Rate (ρ):</strong> Controls how quickly pheromone trails evaporate. Higher values cause faster evaporation, promoting exploration of new paths.</li>
+                <li><strong>Initial Pheromone:</strong> The starting pheromone level on all paths. This value affects how quickly the algorithm converges to a solution.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .algorithm-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .range-value {
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 500;
+        color: var(--aco-color);
+    }
+    
+    .mt-4 {
+        margin-top: 20px;
+    }
+    
+    /* Custom styling for range input */
+    .aco-container input[type="range"]::-webkit-slider-thumb {
+        background: var(--aco-color);
+    }
+    
+    .aco-container input[type="range"]::-moz-range-thumb {
+        background: var(--aco-color);
+    }
+    
+    .aco-container input[type="range"]::-webkit-slider-thumb:hover {
+        box-shadow: 0 0 0 3px rgba(56, 176, 0, 0.3);
+    }
+</style>

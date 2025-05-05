@@ -1,0 +1,39 @@
+/* Global Variables */
+:root {
+    /* Color Palette */
+    --primary: #3a86ff;
+    --primary-dark: #2667cc;
+    --secondary: #8338ec;
+    --accent: #ff006e;
+    --success: #38b000;
+    --warning: #ffbe0b;
+    --danger: #ff5252;
+    --dark: #151515;
+    --dark-surface: #222222;
+    --dark-card: #2d2d2d;
+    --dark-border: #444444;
+    --light: #f8f9fa;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #999999;
+    
+    /* Algorithm Colors */
+    --ga-color: #3a86ff;
+    --pso-color: #ff006e;
+    --aco-color: #38b000;
+    --tabu-color: #8338ec;
+    
+    /* Dimensions */
+    --sidebar-width: 260px;
+    --sidebar-collapsed: 70px;
+    --header-height: 70px;
+    --border-radius: 8px;
+    --card-radius: 12px;
+    
+    /* Effects */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --glow: 0 0 15px rgba(58, 134, 255, 0.5);
+}
